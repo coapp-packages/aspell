@@ -1,0 +1,1447 @@
+# -*- mode: po; buffer-file-coding-system: iso-8859-1; default-input-method: latin-1-prefix -*-
+#
+# Spanish messages for GNU Aspell
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# This file is distributed under the same license as the GNU Aspell package.
+#
+# Sergey Poznyakoff       <gray@gnu.org>, 2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Aspell 0.50.1\n"
+"Report-Msgid-Bugs-To: kevina@gnu.org\n"
+"POT-Creation-Date: 2008-04-06 22:35-0600\n"
+"PO-Revision-Date: 2002-09-08 14:18+0300\n"
+"Last-Translator: Sergey Poznyakoff <gray@gnu.org>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: common/info.cpp:232
+msgid "a number between 0 and 1"
+msgstr ""
+
+#: common/info.cpp:569
+msgid "in the form \"<name> <value>\""
+msgstr ""
+
+#: common/config.cpp:73
+msgid "string"
+msgstr ""
+
+#: common/config.cpp:73
+msgid "integer"
+msgstr ""
+
+#: common/config.cpp:73
+msgid "boolean"
+msgstr ""
+
+#: common/config.cpp:73
+msgid "list"
+msgstr ""
+
+#. TRANSLATORS: "true" and "false" are literal
+#. * values and should not be translated.
+#: common/config.cpp:977
+msgid "either \"true\" or \"false\""
+msgstr ""
+
+#: common/config.cpp:996
+msgid "a positive integer"
+msgstr ""
+
+#: common/config.cpp:1124
+msgid "# default: "
+msgstr ""
+
+#: common/config.cpp:1187
+#, c-format
+msgid ""
+"\n"
+"#######################################################################\n"
+"#\n"
+"# Filter: %s\n"
+"#   %s\n"
+"#\n"
+"# configured as follows:\n"
+"\n"
+msgstr ""
+
+#: common/config.cpp:1285
+msgid "ASPELL_CONF env var"
+msgstr ""
+
+#. TRANSLATORS: The remaing strings in config.cpp should be kept
+#. under 50 characters, begin with a lower case character and not
+#. include any trailing punctuation marks.
+#: common/config.cpp:1359
+msgid "main configuration file"
+msgstr "archivo de configuración principal"
+
+#: common/config.cpp:1361
+msgid "location of main configuration file"
+msgstr "localización del archivo de configuración principal"
+
+#: common/config.cpp:1364
+msgid "location of language data files"
+msgstr "localización de los archivos de idiomas"
+
+#: common/config.cpp:1366
+#, fuzzy
+msgid "create dictionary aliases"
+msgstr "diccionarios adicionales"
+
+#: common/config.cpp:1368
+msgid "location of the main word list"
+msgstr "localización del vocabulario principal"
+
+#: common/config.cpp:1370
+msgid "encoding to expect data to be in"
+msgstr "codificación de la entrada"
+
+#: common/config.cpp:1372
+msgid "add or removes a filter"
+msgstr "Agrega o quita un filtro"
+
+#: common/config.cpp:1374
+msgid "path(s) aspell looks for filters"
+msgstr ""
+
+#: common/config.cpp:1378
+#, fuzzy
+msgid "filter mode"
+msgstr "entrar modo TeX"
+
+#: common/config.cpp:1380
+msgid "extra dictionaries to use"
+msgstr "diccionarios adicionales"
+
+#: common/config.cpp:1382
+msgid "location for personal files"
+msgstr "localización de los archivos personales"
+
+#: common/config.cpp:1384
+msgid "ignore words <= n chars"
+msgstr "omitir palabras con menos de n caracteres"
+
+#. TRANSLATORS: It is OK if this is longer than 50 chars
+#: common/config.cpp:1387
+#, fuzzy
+msgid "ignore accents when checking words -- CURRENTLY IGNORED"
+msgstr "no tener en cuenta los acentos"
+
+#: common/config.cpp:1389
+#, fuzzy
+msgid "ignore case when checking words"
+msgstr "no tener en cuenta los acentos"
+
+#: common/config.cpp:1391
+msgid "ignore commands to store replacement pairs"
+msgstr "pasa por alto ordenes de remplazo"
+
+#: common/config.cpp:1393 common/config.cpp:1460
+msgid "extra information for the word list"
+msgstr "información suplementaria para el vocabulario"
+
+# FUZZY
+#: common/config.cpp:1395
+msgid "keyboard definition to use for typo analysis"
+msgstr "definición del teclado para análisis de errores tipográficos"
+
+#: common/config.cpp:1397
+msgid "language code"
+msgstr "código del idioma"
+
+#: common/config.cpp:1399
+msgid "deprecated, use lang instead"
+msgstr ""
+
+#: common/config.cpp:1401
+msgid "location of local language data files"
+msgstr "localización de los archivos locales de idiomas"
+
+#: common/config.cpp:1403
+msgid "base name of the main dictionary to use"
+msgstr "nombre del diccionario principal"
+
+#: common/config.cpp:1407
+#, fuzzy
+msgid "set module name"
+msgstr "establecer nombre del módulo"
+
+#: common/config.cpp:1409
+#, fuzzy
+msgid "search order for modules"
+msgstr "orden de búsqueda para los módulos"
+
+#: common/config.cpp:1411
+msgid "enable Unicode normalization"
+msgstr ""
+
+#: common/config.cpp:1413
+msgid "Unicode normalization required for current lang"
+msgstr ""
+
+#. TRANSLATORS: the values after the ':' are literal
+#. values and should not be translated.
+#: common/config.cpp:1417
+msgid "Unicode normalization form: none, nfd, nfc, comp"
+msgstr ""
+
+#: common/config.cpp:1419
+msgid "avoid lossy conversions when normalization"
+msgstr ""
+
+#: common/config.cpp:1421
+msgid "personal configuration file"
+msgstr "archivo de configuración principal"
+
+#: common/config.cpp:1424
+#, fuzzy
+msgid "personal dictionary file name"
+msgstr "nombre del vocabulario personal"
+
+#: common/config.cpp:1427
+msgid "prefix directory"
+msgstr "directorio prefijo"
+
+#: common/config.cpp:1429
+msgid "replacements list file name"
+msgstr "nombre del archivo de sustituciones"
+
+#: common/config.cpp:1432
+msgid "consider run-together words legal"
+msgstr "opinar palabras aglutinadas por válidas"
+
+#: common/config.cpp:1434
+#, fuzzy
+msgid "maximum number that can be strung together"
+msgstr "número máximo de las sintagmas que pueden ser aglutinadas"
+
+#: common/config.cpp:1436
+msgid "minimal length of interior words"
+msgstr ""
+
+#: common/config.cpp:1438
+msgid "save replacement pairs on save all"
+msgstr "guardar sustituciones al recibir orden «save all»"
+
+# FUZZY
+#: common/config.cpp:1440
+msgid "set the prefix based on executable location"
+msgstr "deducir prefijo del nombre del ejecutable"
+
+#: common/config.cpp:1442
+msgid "size of the word list"
+msgstr "tamaño del vocabulario"
+
+#: common/config.cpp:1444
+msgid "no longer used"
+msgstr "no se usa más"
+
+#: common/config.cpp:1446
+msgid "suggestion mode"
+msgstr "modo de sugestión"
+
+#. TRANSLATORS: "sug-mode" is a literal value and should not be
+#. translated.
+#: common/config.cpp:1450
+msgid "edit distance to use, override sug-mode default"
+msgstr ""
+
+#: common/config.cpp:1452
+msgid "use typo analysis, override sug-mode default"
+msgstr ""
+
+#: common/config.cpp:1454
+#, fuzzy
+msgid "use replacement tables, override sug-mode default"
+msgstr "guardar sustituciones al recibir orden «save all»"
+
+#: common/config.cpp:1456
+msgid "characters to insert when a word is split"
+msgstr ""
+
+#: common/config.cpp:1458
+msgid "use personal, replacement & session dictionaries"
+msgstr ""
+
+#: common/config.cpp:1462
+#, fuzzy
+msgid "search path for word list information files"
+msgstr "ruta de búsqueda para archivos de información"
+
+#: common/config.cpp:1464
+msgid "enable warnings"
+msgstr ""
+
+#. TRANSLATORS: It is OK if this is longer than 50 chars
+#: common/config.cpp:1474
+msgid "indicator for affix flags in word lists -- CURRENTLY IGNORED"
+msgstr ""
+
+#: common/config.cpp:1476
+msgid "use affix compression when creating dictionaries"
+msgstr ""
+
+#: common/config.cpp:1478
+msgid "remove invalid affix flags"
+msgstr ""
+
+#: common/config.cpp:1480
+msgid "attempts to clean words so that they are valid"
+msgstr ""
+
+#: common/config.cpp:1482
+msgid "compute soundslike on demand rather than storing"
+msgstr ""
+
+#: common/config.cpp:1484
+msgid "partially expand affixes for better suggestions"
+msgstr ""
+
+#: common/config.cpp:1486
+msgid "skip invalid words"
+msgstr ""
+
+#: common/config.cpp:1488
+msgid "check if affix flags are valid"
+msgstr ""
+
+#: common/config.cpp:1490
+msgid "check if words are valid"
+msgstr ""
+
+#: common/config.cpp:1497
+msgid "create a backup file by appending \".bak\""
+msgstr "crear archivo de respaldo añadiendo «.bak» al nombre del archivo"
+
+#: common/config.cpp:1499
+msgid "use byte offsets instead of character offsets"
+msgstr ""
+
+#: common/config.cpp:1501
+msgid "create missing root/affix combinations"
+msgstr ""
+
+#: common/config.cpp:1503
+#, fuzzy
+msgid "keymapping for check mode: \"aspell\" or \"ispell\""
+msgstr "mapa de teclas en modo de verificación: uno de «aspell», «ispell»"
+
+#: common/config.cpp:1505
+msgid "reverse the order of the suggest list"
+msgstr "inversar la lista de sugerencias"
+
+#: common/config.cpp:1507
+msgid "suggest possible replacements"
+msgstr ""
+
+#: common/config.cpp:1509
+msgid "time load time and suggest time in pipe mode"
+msgstr ""
+
+#: common/convert.cpp:303 common/convert.cpp:429
+#, c-format
+msgid ""
+"This could also mean that the file \"%s\" could not be opened for reading or "
+"does not exist."
+msgstr ""
+
+#: common/convert.cpp:552 common/convert.cpp:659 common/convert.cpp:705
+#, fuzzy, c-format
+msgid "The Unicode code point U+%04X is unsupported."
+msgstr "Codificación «%encod:1» no soportada."
+
+#: common/convert.cpp:829
+#, c-format
+msgid "Invalid UTF-8 sequence at position %d."
+msgstr ""
+
+#: common/errors.cpp:27
+msgid "Operation Not Supported: %what:1"
+msgstr ""
+
+#: common/errors.cpp:43
+msgid "The method \"%what:1\" is unimplemented in \"%where:2\"."
+msgstr ""
+
+#: common/errors.cpp:51
+#, c-format
+msgid "%file:1:"
+msgstr "%file:1:"
+
+#: common/errors.cpp:59
+#, c-format
+msgid "The file \"%file:1\" can not be opened"
+msgstr "No se puede abrir archivo «%file:1»"
+
+#: common/errors.cpp:67
+#, c-format
+msgid "The file \"%file:1\" can not be opened for reading."
+msgstr "No se puede abrir archivo «%file:1» para leer"
+
+#: common/errors.cpp:75
+#, c-format
+msgid "The file \"%file:1\" can not be opened for writing."
+msgstr "No se puede abrir archivo «%file:1» para escribir"
+
+#: common/errors.cpp:83
+#, c-format
+msgid "The file name \"%file:1\" is invalid."
+msgstr "Nombre de archivo «%file:1» no es válido."
+
+#: common/errors.cpp:91
+#, c-format
+msgid "The file \"%file:1\" is not in the proper format."
+msgstr "Archivo «%file:1» está de formato incorrecto."
+
+#: common/errors.cpp:107
+#, c-format
+msgid "The directory \"%dir:1\" can not be opened for reading."
+msgstr "No se puede abrir directorio «%dir:1» para leer"
+
+#: common/errors.cpp:123
+msgid "The key \"%key:1\" is unknown."
+msgstr "Clave «%key:1» desconocido."
+
+#: common/errors.cpp:131
+msgid "The value for option \"%key:1\" can not be changed."
+msgstr "No se puede cambiar el valor de clave «%key:1»."
+
+# MAL!
+#: common/errors.cpp:139
+msgid "The key \"%key:1\" is not %accepted:2 and is thus invalid."
+msgstr ""
+
+# MAL!
+#: common/errors.cpp:147
+msgid ""
+"The value \"%value:2\" is not %accepted:3 and is thus invalid for the key \"%"
+"key:1\"."
+msgstr ""
+
+#: common/errors.cpp:163
+#, fuzzy
+msgid "The key \"%key:1\" is not a string."
+msgstr "Clave «%key:1» desconocido."
+
+#: common/errors.cpp:171
+#, fuzzy
+msgid "The key \"%key:1\" is not an integer."
+msgstr "Clave «%key:1» desconocido."
+
+#: common/errors.cpp:179
+#, fuzzy
+msgid "The key \"%key:1\" is not a boolean."
+msgstr "Clave «%key:1» desconocido."
+
+#: common/errors.cpp:187
+#, fuzzy
+msgid "The key \"%key:1\" is not a list."
+msgstr "Clave «%key:1» desconocido."
+
+#: common/errors.cpp:195
+msgid ""
+"The key \"%key:1\" does not take any parameters when prefixed by a \"reset-"
+"\"."
+msgstr ""
+
+#: common/errors.cpp:203
+msgid ""
+"The key \"%key:1\" does not take any parameters when prefixed by an \"enable-"
+"\"."
+msgstr ""
+
+#: common/errors.cpp:211
+msgid ""
+"The key \"%key:1\" does not take any parameters when prefixed by a \"dont-\" "
+"or \"disable-\"."
+msgstr ""
+
+#: common/errors.cpp:219
+msgid ""
+"The key \"%key:1\" does not take any parameters when prefixed by a \"clear-"
+"\"."
+msgstr ""
+
+#: common/errors.cpp:235
+#, c-format
+msgid "The language \"%lang:1\" is not known."
+msgstr "Idioma «%lang:1» no conocida"
+
+#: common/errors.cpp:243
+#, c-format
+msgid "The soundslike \"%sl:2\" is not known."
+msgstr "código «soundslike» %sl:2 no está conocido"
+
+#: common/errors.cpp:251
+#, c-format
+msgid "The language \"%lang:1\" is not supported."
+msgstr "Idioma «%lang:1» no soportada."
+
+#: common/errors.cpp:259
+#, c-format
+msgid "No word lists can be found for the language \"%lang:1\"."
+msgstr "No se encontraron vocabularios para idioma «%lang:1»."
+
+#: common/errors.cpp:267
+#, c-format
+msgid "Expected language \"%lang:1\" but got \"%prev:2\"."
+msgstr "Se esperaba idioma «%lang:1», pero se ha encontrado «%prev:2»."
+
+#: common/errors.cpp:283
+#, c-format
+msgid "Affix '%aff:1' is corrupt."
+msgstr ""
+
+#: common/errors.cpp:291
+#, fuzzy, c-format
+msgid "The condition \"%cond:1\" is invalid."
+msgstr "Palabra «%word:1» no es válida."
+
+#: common/errors.cpp:299
+#, c-format
+msgid ""
+"The condition \"%cond:1\" does not guarantee that \"%strip:2\" can always be "
+"stripped."
+msgstr ""
+
+#: common/errors.cpp:307
+#, fuzzy, c-format
+msgid ""
+"The file \"%file:1\" is not in the proper format. Expected the file to be in "
+"\"%exp:2\" not \"%got:3\"."
+msgstr "Archivo «%file:1» está de formato incorrecto."
+
+#: common/errors.cpp:323
+#, c-format
+msgid "The encoding \"%encod:1\" is not known."
+msgstr "Codificación «%encod:1» desconocida."
+
+#: common/errors.cpp:331
+#, c-format
+msgid "The encoding \"%encod:1\" is not supported."
+msgstr "Codificación «%encod:1» no soportada."
+
+#: common/errors.cpp:339
+#, c-format
+msgid "The conversion from \"%encod:1\" to \"%encod2:2\" is not supported."
+msgstr "Conversión de «%encod:1» a «%encod2:2» no está soportada"
+
+#: common/errors.cpp:379
+#, fuzzy, c-format
+msgid "The string \"%str:1\" is invalid."
+msgstr "Palabra «%word:1» no es válida."
+
+#: common/errors.cpp:387
+msgid "The word \"%word:1\" is invalid."
+msgstr "Palabra «%word:1» no es válida."
+
+#: common/errors.cpp:395
+msgid "The affix flag '%aff:1' is invalid for word \"%word:2\"."
+msgstr ""
+
+#: common/errors.cpp:403
+#, fuzzy
+msgid "The affix flag '%aff:1' can not be applied to word \"%word:2\"."
+msgstr "No se puede abrir archivo «%file:1» para escribir"
+
+#: common/errors.cpp:451
+msgid "not a version number"
+msgstr ""
+
+#: common/errors.cpp:467
+msgid "dlopen returned \"%return:1\"."
+msgstr ""
+
+#: common/errors.cpp:475
+#, fuzzy, c-format
+msgid "The file \"%filter:1\" does not contain any filters."
+msgstr "Archivo «%file:1» está de formato incorrecto."
+
+#: common/errors.cpp:483
+#, fuzzy, c-format
+msgid "The filter \"%filter:1\" does not exist."
+msgstr "No se puede abrir archivo «%file:1»"
+
+#: common/errors.cpp:491 common/errors.cpp:587
+msgid "Confused by version control."
+msgstr ""
+
+#: common/errors.cpp:499
+msgid "Aspell version does not match filter's requirement."
+msgstr ""
+
+#: common/errors.cpp:507
+msgid "Filter option already exists."
+msgstr ""
+
+#: common/errors.cpp:515
+msgid "Use option modifiers only within named option."
+msgstr ""
+
+#: common/errors.cpp:523
+msgid "Option modifier unknown."
+msgstr ""
+
+#: common/errors.cpp:531
+msgid "Error setting filter description."
+msgstr ""
+
+#: common/errors.cpp:547
+msgid "Empty option specifier."
+msgstr ""
+
+#: common/errors.cpp:555
+#, c-format
+msgid "Option \"%option:1\" possibly specified prior to filter."
+msgstr ""
+
+#: common/errors.cpp:563
+msgid "Unknown mode description key \"%key:1\"."
+msgstr ""
+
+#: common/errors.cpp:571
+#, c-format
+msgid "Expecting \"%modekey:1\" key."
+msgstr ""
+
+#: common/errors.cpp:579
+msgid "Version specifier missing key: \"aspell\"."
+msgstr ""
+
+#: common/errors.cpp:595
+msgid "Aspell version does not match mode's requirement."
+msgstr ""
+
+#: common/errors.cpp:603
+msgid "Missing magic mode expression."
+msgstr ""
+
+#: common/errors.cpp:611
+#, c-format
+msgid "Empty extension at char %char:1."
+msgstr ""
+
+#: common/errors.cpp:619
+#, c-format
+msgid "\"%mode:1\" error"
+msgstr ""
+
+#: common/errors.cpp:627
+#, c-format
+msgid "Unknown mode: \"%mode:1\"."
+msgstr ""
+
+#: common/errors.cpp:635
+#, c-format
+msgid "\"%mode:1\" error while extend Aspell modes. (out of memory?)"
+msgstr ""
+
+#: common/errors.cpp:651
+#, c-format
+msgid "\"%mode:1\": no start for magic search given for magic \"%magic:2\"."
+msgstr ""
+
+#: common/errors.cpp:659
+#, c-format
+msgid "\"%mode:1\": no range for magic search given for magic \"%magic:2\"."
+msgstr ""
+
+#: common/errors.cpp:667
+#, c-format
+msgid "\"%mode:1\": no magic expression available for magic \"%magic:2\"."
+msgstr ""
+
+#: common/errors.cpp:675
+msgid ""
+"\"%mode:1\": Magic \"%magic:2\": bad regular expression after location "
+"specifier; regexp reports: \"%regerr:3\"."
+msgstr ""
+
+#: common/errors.cpp:691
+#, c-format
+msgid "\"%expression:1\" is not a valid regular expression."
+msgstr ""
+
+# FUZZY
+#: common/posib_err.cpp:100
+msgid "Unhandled Error: "
+msgstr "Error no soportado: "
+
+#: prog/aspell.cpp:97
+#, fuzzy, c-format
+msgid "Error: %s\n"
+msgstr "Error: "
+
+#: prog/aspell.cpp:102
+msgid "Error: "
+msgstr "Error: "
+
+#: prog/aspell.cpp:203
+msgid "enter Email mode."
+msgstr "entrar modo Email"
+
+#: prog/aspell.cpp:204
+#, fuzzy
+msgid "enter HTML mode."
+msgstr "entrar modo TeX"
+
+#: prog/aspell.cpp:205
+msgid "enter TeX mode."
+msgstr "entrar modo TeX"
+
+#: prog/aspell.cpp:206
+#, fuzzy
+msgid "enter Nroff mode."
+msgstr "entrar modo TeX"
+
+#: prog/aspell.cpp:312
+#, fuzzy, c-format
+msgid "Invalid Option: %s"
+msgstr "Opción inválida: "
+
+#: prog/aspell.cpp:319
+msgid " does not take any parameters."
+msgstr " no admite ningún argumento"
+
+#: prog/aspell.cpp:332 prog/aspell.cpp:392
+#, fuzzy, c-format
+msgid "You must specify a parameter for \"%s\"."
+msgstr "%s requiere un argumento"
+
+#: prog/aspell.cpp:381
+msgid "You must specify an action"
+msgstr "Vd. tiene que especificar una acción"
+
+#: prog/aspell.cpp:389 prog/aspell.cpp:452 prog/aspell.cpp:474
+#, fuzzy, c-format
+msgid "Unknown Action: %s"
+msgstr "Acción desconocida: "
+
+#: prog/aspell.cpp:395
+#, fuzzy, c-format
+msgid "Error: You must specify at least %d parameters for \"%s\".\n"
+msgstr "%s requiere un argumento"
+
+#: prog/aspell.cpp:637
+msgid "Invalid Input"
+msgstr "Entrada inválida"
+
+#: prog/aspell.cpp:710
+#, fuzzy, c-format
+msgid "WARNING: Unable to enter Nroff mode: %s\n"
+msgstr "entrar modo TeX"
+
+#: prog/aspell.cpp:731
+#, fuzzy
+msgid "Time to load word list: "
+msgstr "tamaño del vocabulario"
+
+#: prog/aspell.cpp:929
+#, fuzzy, c-format
+msgid "Suggestion Time: %f\n"
+msgstr "modo de sugestión"
+
+#: prog/aspell.cpp:972
+#, fuzzy
+msgid "You must specify a file name."
+msgstr "Vd. tiene que especificar nombre del archivo.\n"
+
+#: prog/aspell.cpp:975
+msgid "Only one file name may be specified."
+msgstr ""
+
+#: prog/aspell.cpp:985
+#, c-format
+msgid "Could not open the file \"%s\" for reading"
+msgstr "No se puede abrir «%s» para leer"
+
+#: prog/aspell.cpp:1000
+#, fuzzy, c-format
+msgid "Could not open the file \"%s\" for writing. File not saved."
+msgstr "No se puede abrir «%s» para escribir. El archivo no está guardado."
+
+#: prog/aspell.cpp:1013
+#, fuzzy, c-format
+msgid "Invalid keymapping: %s"
+msgstr "Mapa de teclado inválida: "
+
+#: prog/aspell.cpp:1033
+msgid "Ignore"
+msgstr "Omitir"
+
+#: prog/aspell.cpp:1034
+msgid "Ignore all"
+msgstr "Omitir todos"
+
+#: prog/aspell.cpp:1035
+msgid "Replace"
+msgstr "Sustituir"
+
+#: prog/aspell.cpp:1036
+msgid "Replace all"
+msgstr "Sustituir todos"
+
+#: prog/aspell.cpp:1037
+msgid "Add"
+msgstr "Agregar"
+
+#: prog/aspell.cpp:1038
+msgid "Add Lower"
+msgstr "Agregar minúsculas"
+
+#: prog/aspell.cpp:1039
+msgid "Abort"
+msgstr "Abortar"
+
+#: prog/aspell.cpp:1040
+msgid "Exit"
+msgstr "Salir"
+
+# FUZZY
+#: prog/aspell.cpp:1116
+#, fuzzy
+msgid "Are you sure you want to abort (y/n)? "
+msgstr "Está Vd. seguro que quiere abortar? "
+
+#. TRANSLATORS: The user may input any of these characters to say "yes".
+#. MUST ONLY CONSIST OF ASCII CHARACTERS.
+#: prog/aspell.cpp:1120
+msgid "Yy"
+msgstr ""
+
+# sustituir ... a: ...
+#: prog/aspell.cpp:1141
+msgid "With: "
+msgstr "a: "
+
+#: prog/aspell.cpp:1158
+msgid "Sorry that is an invalid choice!"
+msgstr "Disculpe, la selección no es válida!"
+
+#: prog/aspell.cpp:1379
+msgid "Sorry \"filter\" is currently unimplemented.\n"
+msgstr ""
+
+#: prog/aspell.cpp:1513
+#, fuzzy
+msgid "Can't merge a master word list yet. Sorry."
+msgstr "No se puede juntar el vocabulario principal todavía. Disculpe\n"
+
+#: prog/aspell.cpp:1537
+msgid "Sorry \"create/merge personal\" is currently unimplemented.\n"
+msgstr ""
+
+#: prog/aspell.cpp:1546 prog/aspell.cpp:1602
+#, c-format
+msgid "Sorry I won't overwrite \"%s\""
+msgstr "Disculpe, no voy a sobreescribir «%s»"
+
+#: prog/aspell.cpp:1593
+msgid "Sorry \"create/merge repl\" is currently unimplemented.\n"
+msgstr ""
+
+#: prog/aspell.cpp:1865
+#, c-format
+msgid "\"%s\" is not a valid flag for the \"munch-list\" command."
+msgstr ""
+
+#. TRANSLATORS: These should all be formated to fit in 80 column or
+#. less
+#: prog/aspell.cpp:2792
+msgid "Usage: aspell [options] <command>"
+msgstr ""
+
+#: prog/aspell.cpp:2793
+msgid "<command> is one of:"
+msgstr ""
+
+#: prog/aspell.cpp:2794
+msgid "  -?|usage         display a brief usage message"
+msgstr ""
+
+#: prog/aspell.cpp:2795
+msgid "  help             display a detailed help message"
+msgstr ""
+
+#: prog/aspell.cpp:2796
+msgid "  -c|check <file>  to check a file"
+msgstr ""
+
+#: prog/aspell.cpp:2797
+msgid "  -a|pipe          \"ispell -a\" compatibility mode"
+msgstr ""
+
+#: prog/aspell.cpp:2798
+msgid "  [dump] config    dumps the current configuration to stdout"
+msgstr ""
+
+#: prog/aspell.cpp:2799
+msgid "  config <key>     prints the current value of an option"
+msgstr ""
+
+#: prog/aspell.cpp:2800
+msgid "  [dump] dicts | filters | modes"
+msgstr ""
+
+#: prog/aspell.cpp:2801
+msgid "    lists available dictionaries / filters / filter modes"
+msgstr ""
+
+#: prog/aspell.cpp:2802
+msgid "[options] is any of the following:"
+msgstr ""
+
+#: prog/aspell.cpp:2815
+msgid ""
+"  list             produce a list of misspelled words from standard input"
+msgstr ""
+
+#: prog/aspell.cpp:2818
+msgid ""
+"  soundslike       returns the sounds like equivalent for each word entered"
+msgstr ""
+
+#: prog/aspell.cpp:2819
+msgid "  munch            generate possible root words and affixes"
+msgstr ""
+
+#: prog/aspell.cpp:2820
+msgid "  expand [1-4]     expands affix flags"
+msgstr ""
+
+#: prog/aspell.cpp:2821
+msgid ""
+"  clean [strict]   cleans a word list so that every line is a valid word"
+msgstr ""
+
+#: prog/aspell.cpp:2823
+msgid "  -v|version       prints a version line"
+msgstr ""
+
+#: prog/aspell.cpp:2824
+msgid "  munch-list [simple] [single|multi] [keep]"
+msgstr ""
+
+#: prog/aspell.cpp:2825
+msgid "    reduce the size of a word list via affix compression"
+msgstr ""
+
+#: prog/aspell.cpp:2826
+msgid "  conv <from> <to> [<norm-form>]"
+msgstr ""
+
+#: prog/aspell.cpp:2827
+msgid "    converts from one encoding to another"
+msgstr ""
+
+#: prog/aspell.cpp:2828
+msgid "  norm (<norm-map> | <from> <norm-map> <to>) [<norm-form>]"
+msgstr ""
+
+#: prog/aspell.cpp:2829
+msgid "    perform Unicode normalization"
+msgstr ""
+
+#: prog/aspell.cpp:2832
+msgid "  dump|create|merge master|personal|repl [<name>]"
+msgstr ""
+
+#: prog/aspell.cpp:2833
+msgid ""
+"    dumps, creates or merges a master, personal, or replacement dictionary."
+msgstr ""
+
+#. TRANSLATORS: "none", "internal" and "strict" are literal values
+#. and should not be translated.
+#: prog/aspell.cpp:2837
+msgid ""
+"  <norm-form>      normalization form to use, either none, internal, or "
+"strict"
+msgstr ""
+
+#: prog/aspell.cpp:2847
+#, c-format
+msgid ""
+"\n"
+"Aspell %s.  Copyright 2000-2004 by Kevin Atkinson.\n"
+"\n"
+msgstr ""
+
+#: prog/aspell.cpp:2881
+msgid ""
+"Available Dictionaries:\n"
+"    Dictionaries can be selected directly via the \"-d\" or \"master\"\n"
+"    option.  They can also be selected indirectly via the \"lang\",\n"
+"    \"variety\", and \"size\" options.\n"
+msgstr ""
+
+#: prog/aspell.cpp:2902
+msgid ""
+"Available Filters (and associated options):\n"
+"    Filters can be added or removed via the \"filter\" option.\n"
+msgstr ""
+
+#: prog/aspell.cpp:2909
+#, c-format
+msgid ""
+"\n"
+"  %s filter: %s\n"
+msgstr ""
+
+#. TRANSLATORS: This should be formated to fit in 80 column or less
+#: prog/aspell.cpp:2926
+msgid ""
+"Available Filter Modes:\n"
+"    Filter Modes are reconfigured combinations of filters optimized for\n"
+"    files of a specific type. A mode is selected via the \"mode\" option.\n"
+"    This will happen implicitly if Aspell is able to identify the file\n"
+"    type from the extension, and possibility the contents, of the file.\n"
+msgstr ""
+
+#: prog/check_funs.cpp:287
+msgid "Error: Stdin not a terminal."
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:769
+msgid "Enter"
+msgstr ""
+
+#: prog/check_funs.cpp:771
+msgid "Accept Changes"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:774
+msgid "Backspace"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:776
+msgid "Control-H"
+msgstr ""
+
+#: prog/check_funs.cpp:777
+msgid "Delete the previous character"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:780
+msgid "Left"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:782
+msgid "Control-B"
+msgstr ""
+
+#: prog/check_funs.cpp:783
+msgid "Move Back one space"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:786
+msgid "Right"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:788
+msgid "Control-F"
+msgstr ""
+
+#: prog/check_funs.cpp:789
+msgid "Move Forward one space"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:792
+msgid "Home"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:794
+msgid "Control-A"
+msgstr ""
+
+#: prog/check_funs.cpp:795
+msgid "Move to the beginning of the line"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:798
+msgid "End"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:800
+msgid "Control-E"
+msgstr ""
+
+#: prog/check_funs.cpp:801
+msgid "Move to the end of the line"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:804
+msgid "Delete"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:806
+msgid "Control-D"
+msgstr ""
+
+#: prog/check_funs.cpp:807
+#, fuzzy
+msgid "Delete the next character"
+msgstr "comillas email"
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:811
+msgid "Control-K"
+msgstr ""
+
+#: prog/check_funs.cpp:812
+msgid "Kill all characters to the EOL"
+msgstr ""
+
+#. TRANSLATORS: This is a literal Key.
+#: prog/check_funs.cpp:816
+msgid "Control-C"
+msgstr ""
+
+#: prog/check_funs.cpp:817
+msgid "Abort This Operation"
+msgstr ""
+
+#: modules/speller/default/language.cpp:103
+msgid "This is probably because: "
+msgstr ""
+
+#: modules/speller/default/language.cpp:110
+msgid "The required field \"name\" is missing."
+msgstr ""
+
+#: modules/speller/default/language.cpp:488
+msgid "Empty string."
+msgstr ""
+
+#: modules/speller/default/language.cpp:492
+#, c-format
+msgid "The character '%s' (U+%02X) may not appear at the beginning of a word."
+msgstr ""
+
+#: modules/speller/default/language.cpp:494
+#: modules/speller/default/language.cpp:503
+#, c-format
+msgid ""
+"The character '%s' (U+%02X) must be followed by an alphabetic character."
+msgstr ""
+
+#: modules/speller/default/language.cpp:496
+#, fuzzy
+msgid "Does not contain any alphabetic characters."
+msgstr " no admite ningún argumento"
+
+#: modules/speller/default/language.cpp:501
+#, c-format
+msgid "The character '%s' (U+%02X) may not appear in the middle of a word."
+msgstr ""
+
+#: modules/speller/default/language.cpp:508
+msgid ""
+"The character '\\r' (U+0D) may not appear at the end of a word. This "
+"probably means means that the file is using MS-DOS EOL instead of Unix EOL."
+msgstr ""
+
+#: modules/speller/default/language.cpp:511
+#, c-format
+msgid "The character '%s' (U+%02X) may not appear at the end of a word."
+msgstr ""
+
+#: modules/speller/default/language.cpp:543
+#, c-format
+msgid "Warning: Removing invalid affix '%s' from word %s.\n"
+msgstr ""
+
+#: modules/speller/default/language.cpp:544
+#, c-format
+msgid "Warning: Removing inapplicable affix '%s' from word %s.\n"
+msgstr ""
+
+#: modules/speller/default/language.cpp:674
+#, c-format
+msgid "Warning: %s Skipping string.\n"
+msgstr ""
+
+#: modules/speller/default/language.cpp:732
+msgid "The total length is larger than 240 characters."
+msgstr ""
+
+#: modules/speller/default/language.cpp:736
+#, c-format
+msgid "Warning: %s Skipping word.\n"
+msgstr ""
+
+#: modules/speller/default/affix.cpp:426
+msgid "Possibly incorrect count."
+msgstr ""
+
+#: modules/speller/default/readonly_ws.cpp:362
+msgid "Wrong endian order."
+msgstr ""
+
+#: modules/speller/default/readonly_ws.cpp:385
+msgid "Wrong soundslike."
+msgstr ""
+
+#: modules/speller/default/readonly_ws.cpp:391
+msgid "Wrong soundslike version."
+msgstr ""
+
+#: modules/speller/default/readonly_ws.cpp:855
+msgid "Affix flags found in word but no affix file given."
+msgstr ""
+
+#: modules/speller/default/readonly_ws.cpp:893
+msgid ""
+"The total word length, with soundslike data, is larger than 240 characters."
+msgstr ""
+
+#: modules/speller/default/multi_ws.cpp:58
+msgid "There must be at least one \"add\" line."
+msgstr ""
+
+#: modules/speller/default/suggest.cpp:1403
+msgid "one of ultra, fast, normal, slow, or bad-spellers"
+msgstr ""
+
+#: modules/speller/default/data.cpp:404
+msgid "is not one of the allowed types"
+msgstr ""
+
+#: modules/speller/default/speller_impl.cpp:233
+msgid "The personal word list is unavailable."
+msgstr ""
+
+#: modules/speller/default/speller_impl.cpp:240
+msgid "The session word list is unavailable."
+msgstr ""
+
+#: modules/speller/default/speller_impl.cpp:247
+msgid "The main word list is unavailable."
+msgstr ""
+
+#: modules/filter/tex.cpp:255 modules/filter/tex.cpp:262
+msgid "a string of 'o','O','p',or 'P'"
+msgstr ""
+
+#. TRANSLATORS: Like the strings in config.cpp, all strings in *-filter.opt
+#. should be under 50 characters, begin with a lower case character and 
+#. not include any trailing punctuation marks.
+#: modules/filter/context-filter.info:7
+msgid "experimental filter for hiding delimited contexts"
+msgstr ""
+
+#: modules/filter/context-filter.info:13
+msgid "context delimiters (separated by spaces)"
+msgstr ""
+
+#: modules/filter/context-filter.info:21
+msgid "swaps visible and invisible text"
+msgstr ""
+
+#: modules/filter/email-filter.info:7
+msgid "filter for skipping quoted text in email messages"
+msgstr ""
+
+#: modules/filter/email-filter.info:13
+msgid "email quote characters"
+msgstr "comillas email"
+
+#: modules/filter/email-filter.info:21
+msgid "num chars that can appear before the quote char"
+msgstr "número de caracteres admitidos antes de la comilla email"
+
+#: modules/filter/html-filter.info:9
+msgid "filter for dealing with HTML documents"
+msgstr ""
+
+#: modules/filter/html-filter.info:15
+#, fuzzy
+msgid "HTML attributes to always check"
+msgstr "siempre averiguar estos atributos SGML"
+
+#: modules/filter/html-filter.info:21
+msgid "HTML tags to always skip the contents of"
+msgstr ""
+
+#: modules/filter/nroff-filter.info:7
+msgid "filter for dealing with Nroff documents"
+msgstr ""
+
+#: modules/filter/sgml-filter.info:9
+msgid "filter for dealing with generic SGML/XML documents"
+msgstr ""
+
+#: modules/filter/sgml-filter.info:15
+#, fuzzy
+msgid "SGML attributes to always check"
+msgstr "siempre averiguar estos atributos SGML"
+
+#: modules/filter/sgml-filter.info:20
+msgid "SGML tags to always skip the contents of"
+msgstr ""
+
+#: modules/filter/tex-filter.info:7
+msgid "filter for dealing with TeX/LaTeX documents"
+msgstr ""
+
+#: modules/filter/tex-filter.info:15
+msgid "check TeX comments"
+msgstr "verificar dentro de comentarios TeX"
+
+#: modules/filter/tex-filter.info:21
+msgid "TeX commands"
+msgstr "ordenes TeX"
+
+#: modules/filter/texinfo-filter.info:7
+msgid "filter for dealing with Texinfo documents"
+msgstr ""
+
+#: modules/filter/texinfo-filter.info:13
+#, fuzzy
+msgid "Texinfo commands to ignore the parameters of"
+msgstr "pasa por alto ordenes de remplazo"
+
+#: modules/filter/texinfo-filter.info:41
+msgid "Texinfo environments to ignore"
+msgstr ""
+
+#: modules/filter/url-filter.info:7
+msgid "filter to skip URL like constructs"
+msgstr ""
+
+#: modules/filter/modes/ccpp.amf:8
+msgid "mode for checking C++ comments and string literals"
+msgstr ""
+
+#: modules/filter/modes/comment.amf:5
+msgid "mode to check any lines starting with a #"
+msgstr ""
+
+#: modules/filter/modes/email.amf:5
+msgid "mode for skipping quoted text in email messages"
+msgstr ""
+
+#: modules/filter/modes/html.amf:10
+msgid "mode for checking HTML documents"
+msgstr ""
+
+#: modules/filter/modes/none.amf:5
+msgid "mode to disable all filters"
+msgstr ""
+
+#: modules/filter/modes/nroff.amf:7
+msgid "mode for checking Nroff documents"
+msgstr ""
+
+#: modules/filter/modes/perl.amf:8
+msgid "mode for checking Perl comments and string literals"
+msgstr ""
+
+#: modules/filter/modes/sgml.amf:8
+msgid "mode for checking generic SGML/XML documents"
+msgstr ""
+
+#: modules/filter/modes/tex.amf:7
+msgid "mode for checking TeX/LaTeX documents"
+msgstr ""
+
+#: modules/filter/modes/texinfo.amf:7
+msgid "mode for checking Texinfo documents"
+msgstr ""
+
+#: modules/filter/modes/url.amf:5
+msgid "mode to skip URL like constructs (default mode)"
+msgstr ""
+
+#~ msgid "strip accents from word lists"
+#~ msgstr "eliminar acentos de las palabras en vocabulario"
+
+#, fuzzy
+#~ msgid "%where:1: Filter \"%filter:2\" could not be found in filter paths."
+#~ msgstr "No se puede abrir archivo «%file:1» para leer"
+
+#~ msgid "enter Html/Sgml mode."
+#~ msgstr "entrar modo Htmp/Sgml"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "Aspell %s alpha.  Copyright 2000 by Kevin Atkinson.\n"
+#~ "\n"
+#~ "Usage: aspell [options] <command>\n"
+#~ "\n"
+#~ "<command> is one of:\n"
+#~ "  -?|help [<expr>] display this help message\n"
+#~ "                    and help for filters matching <expr> if installed\n"
+#~ "  -c|check <file>  to check a file\n"
+#~ "  -a|pipe          \"ispell -a\" compatibility mode\n"
+#~ "  -l|list          produce a list of misspelled words from standard "
+#~ "input\n"
+#~ "  [dump] config [-e <expr>]  dumps the current configuration to stdout\n"
+#~ "  config [+e <expr>] <key>   prints the current value of an option\n"
+#~ "  soundslike       returns the sounds like equivalent for each word "
+#~ "entered\n"
+#~ "  filter           passes standard input through filters\n"
+#~ "  -v|version       prints a version line\n"
+#~ "  dump|create|merge master|personal|repl [word list]\n"
+#~ "    dumps, creates or merges a master, personal, or replacement word "
+#~ "list.\n"
+#~ "\n"
+#~ "  <expr>           regular expression matching filtername(s) or `all'\n"
+#~ "\n"
+#~ "[options] is any of the following:\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Aspell %s alpha. Copyright 2000, Kevin Atkinson.\n"
+#~ "\n"
+#~ "Modo de empleo: aspell [opciones] <orden>\n"
+#~ "\n"
+#~ "<orden> es uno de:\n"
+#~ "  -?|help          dar esta lista de ayuda\n"
+#~ "  -c|check <file>  averiguar ortografía de <file>\\n\"\n"
+#~ "  -a|pipe          modo de compatibilidad con «ispell -a»\n"
+#~ "  -l|list          generar una lista de palabras mal escritas de la "
+#~ "entrada\n"
+#~ "                   estándar.\n"
+#~ "  [dump] config    mostrar la configuración corriente en la salida "
+#~ "estándar.\n"
+#~ "  config <key>     mostrar el valor de la opción\n"
+#~ "  soundslike       para cada palabra de entrada producir su equivalente\n"
+#~ "                   «soundslike»\n"
+#~ "  filter           pasar la entrada estándar a través del filtro\n"
+#~ "  -v|version       mostrar la versión del programa\n"
+#~ "  dump|create|merge master|personal|repl [vocabulario]\\n\"\n"
+#~ "    mostrar, crear o juntar el vocabulario principal, personal o\n"
+#~ "    de sustituciones.\n"
+#~ "\n"
+#~ "[opciones] son:\n"
+
+#, fuzzy
+#~ msgid "Filter for eliminating email quote characters"
+#~ msgstr "comillas email"
+
+#~ msgid "sgml file extensions"
+#~ msgstr "sufijos de archivos SGML"
+
+#~ msgid "TeX file extensions"
+#~ msgstr "sufijos de archivos TeX"
