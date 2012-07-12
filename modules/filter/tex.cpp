@@ -756,12 +756,12 @@ namespace {
 #endif
 }
 
-C_EXPORT 
+C_EXPORT CPP_EXPORT 
 IndividualFilter * new_aspell_tex_filter() {return new TexFilter;}
 
 #if 0
-C_EXPORT 
+C_EXPORT CPP_EXPORT 
 IndividualFilter * new_aspell_tex_decoder() {return new TexDecoder;}
-C_EXPORT 
+C_EXPORT CPP_EXPORT 
 IndividualFilter * new_aspell_tex_encoder() {return new TexEncoder;}
 #endif

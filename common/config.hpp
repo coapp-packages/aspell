@@ -230,8 +230,8 @@ namespace acommon {
     PosibErr<void> read_in_string(ParmStr str, const char * what = "");
   };
 
-  Config * new_config();
-  Config * new_basic_config(); // config which doesn't require any
+  CPP_EXPORT Config * new_config();
+  CPP_EXPORT Config * new_basic_config(); // config which doesn't require any
 			       // external symbols
 
   class NotifierEnumeration {
@@ -271,8 +271,8 @@ namespace acommon {
   class AddableContainer;
   class StringList;
 
-  void separate_list(ParmStr value, AddableContainer & out, bool do_unescape = true);
-  void combine_list(String & res, const StringList &);
+  CPP_EXPORT void separate_list(ParmStr value, AddableContainer & out, bool do_unescape = true);
+  CPP_EXPORT void combine_list(String & res, const StringList &);
 
 
 }

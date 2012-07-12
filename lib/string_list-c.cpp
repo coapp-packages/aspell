@@ -15,57 +15,57 @@ class MutableContainer;
 class StringEnumeration;
 class StringList;
 
-extern "C" StringList * new_aspell_string_list()
+extern "C" CPP_EXPORT StringList * new_aspell_string_list()
 {
   return new_string_list();
 }
 
-extern "C" int aspell_string_list_empty(const StringList * ths)
+extern "C" CPP_EXPORT int aspell_string_list_empty(const StringList * ths)
 {
   return ths->empty();
 }
 
-extern "C" unsigned int aspell_string_list_size(const StringList * ths)
+extern "C" CPP_EXPORT unsigned int aspell_string_list_size(const StringList * ths)
 {
   return ths->size();
 }
 
-extern "C" StringEnumeration * aspell_string_list_elements(const StringList * ths)
+extern "C" CPP_EXPORT StringEnumeration * aspell_string_list_elements(const StringList * ths)
 {
   return ths->elements();
 }
 
-extern "C" int aspell_string_list_add(StringList * ths, const char * to_add)
+extern "C" CPP_EXPORT int aspell_string_list_add(StringList * ths, const char * to_add)
 {
   return ths->add(to_add);
 }
 
-extern "C" int aspell_string_list_remove(StringList * ths, const char * to_rem)
+extern "C" CPP_EXPORT int aspell_string_list_remove(StringList * ths, const char * to_rem)
 {
   return ths->remove(to_rem);
 }
 
-extern "C" void aspell_string_list_clear(StringList * ths)
+extern "C" CPP_EXPORT void aspell_string_list_clear(StringList * ths)
 {
   ths->clear();
 }
 
-extern "C" MutableContainer * aspell_string_list_to_mutable_container(StringList * ths)
+extern "C" CPP_EXPORT MutableContainer * aspell_string_list_to_mutable_container(StringList * ths)
 {
   return ths;
 }
 
-extern "C" void delete_aspell_string_list(StringList * ths)
+extern "C" CPP_EXPORT void delete_aspell_string_list(StringList * ths)
 {
   delete ths;
 }
 
-extern "C" StringList * aspell_string_list_clone(const StringList * ths)
+extern "C" CPP_EXPORT StringList * aspell_string_list_clone(const StringList * ths)
 {
   return ths->clone();
 }
 
-extern "C" void aspell_string_list_assign(StringList * ths, const StringList * other)
+extern "C" CPP_EXPORT void aspell_string_list_assign(StringList * ths, const StringList * other)
 {
   ths->assign(other);
 }

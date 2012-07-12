@@ -17,27 +17,27 @@ struct Error;
 class Filter;
 class Speller;
 
-extern "C" void delete_aspell_document_checker(DocumentChecker * ths)
+extern "C" CPP_EXPORT void delete_aspell_document_checker(DocumentChecker * ths)
 {
   delete ths;
 }
 
-extern "C" unsigned int aspell_document_checker_error_number(const DocumentChecker * ths)
+extern "C" CPP_EXPORT unsigned int aspell_document_checker_error_number(const DocumentChecker * ths)
 {
   return ths->err_ == 0 ? 0 : 1;
 }
 
-extern "C" const char * aspell_document_checker_error_message(const DocumentChecker * ths)
+extern "C" CPP_EXPORT const char * aspell_document_checker_error_message(const DocumentChecker * ths)
 {
   return ths->err_ ? ths->err_->mesg : "";
 }
 
-extern "C" const Error * aspell_document_checker_error(const DocumentChecker * ths)
+extern "C" CPP_EXPORT const Error * aspell_document_checker_error(const DocumentChecker * ths)
 {
   return ths->err_;
 }
 
-extern "C" CanHaveError * new_aspell_document_checker(Speller * speller)
+extern "C" CPP_EXPORT CanHaveError * new_aspell_document_checker(Speller * speller)
 {
   PosibErr<DocumentChecker *> ret = new_document_checker(speller);
   if (ret.has_err()) {
@@ -47,27 +47,27 @@ extern "C" CanHaveError * new_aspell_document_checker(Speller * speller)
   }
 }
 
-extern "C" DocumentChecker * to_aspell_document_checker(CanHaveError * obj)
+extern "C" CPP_EXPORT DocumentChecker * to_aspell_document_checker(CanHaveError * obj)
 {
   return static_cast<DocumentChecker *>(obj);
 }
 
-extern "C" void aspell_document_checker_reset(DocumentChecker * ths)
+extern "C" CPP_EXPORT void aspell_document_checker_reset(DocumentChecker * ths)
 {
   ths->reset();
 }
 
-extern "C" void aspell_document_checker_process(DocumentChecker * ths, const char * str, int size)
+extern "C" CPP_EXPORT void aspell_document_checker_process(DocumentChecker * ths, const char * str, int size)
 {
   ths->process(str, size);
 }
 
-extern "C" Token aspell_document_checker_next_misspelling(DocumentChecker * ths)
+extern "C" CPP_EXPORT Token aspell_document_checker_next_misspelling(DocumentChecker * ths)
 {
   return ths->next_misspelling();
 }
 
-extern "C" Filter * aspell_document_checker_filter(DocumentChecker * ths)
+extern "C" CPP_EXPORT Filter * aspell_document_checker_filter(DocumentChecker * ths)
 {
   return ths->filter();
 }

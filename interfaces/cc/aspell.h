@@ -34,13 +34,13 @@ typedef union AspellTypeId AspellTypeId;
 typedef struct AspellMutableContainer AspellMutableContainer;
 
 
-int aspell_mutable_container_add(struct AspellMutableContainer * ths, const char * to_add);
+CPP_EXPORT int aspell_mutable_container_add(struct AspellMutableContainer * ths, const char * to_add);
 
-int aspell_mutable_container_remove(struct AspellMutableContainer * ths, const char * to_rem);
+CPP_EXPORT int aspell_mutable_container_remove(struct AspellMutableContainer * ths, const char * to_rem);
 
-void aspell_mutable_container_clear(struct AspellMutableContainer * ths);
+CPP_EXPORT void aspell_mutable_container_clear(struct AspellMutableContainer * ths);
 
-struct AspellMutableContainer * aspell_mutable_container_to_mutable_container(struct AspellMutableContainer * ths);
+CPP_EXPORT struct AspellMutableContainer * aspell_mutable_container_to_mutable_container(struct AspellMutableContainer * ths);
 
 
 
@@ -82,51 +82,51 @@ typedef struct AspellKeyInfo AspellKeyInfo;
 typedef struct AspellKeyInfoEnumeration AspellKeyInfoEnumeration;
 
 
-int aspell_key_info_enumeration_at_end(const struct AspellKeyInfoEnumeration * ths);
+CPP_EXPORT int aspell_key_info_enumeration_at_end(const struct AspellKeyInfoEnumeration * ths);
 
-const struct AspellKeyInfo * aspell_key_info_enumeration_next(struct AspellKeyInfoEnumeration * ths);
+CPP_EXPORT const struct AspellKeyInfo * aspell_key_info_enumeration_next(struct AspellKeyInfoEnumeration * ths);
 
-void delete_aspell_key_info_enumeration(struct AspellKeyInfoEnumeration * ths);
+CPP_EXPORT void delete_aspell_key_info_enumeration(struct AspellKeyInfoEnumeration * ths);
 
-struct AspellKeyInfoEnumeration * aspell_key_info_enumeration_clone(const struct AspellKeyInfoEnumeration * ths);
+CPP_EXPORT struct AspellKeyInfoEnumeration * aspell_key_info_enumeration_clone(const struct AspellKeyInfoEnumeration * ths);
 
-void aspell_key_info_enumeration_assign(struct AspellKeyInfoEnumeration * ths, const struct AspellKeyInfoEnumeration * other);
+CPP_EXPORT void aspell_key_info_enumeration_assign(struct AspellKeyInfoEnumeration * ths, const struct AspellKeyInfoEnumeration * other);
 
 
 
 typedef struct AspellConfig AspellConfig;
 
 
-struct AspellConfig * new_aspell_config();
+CPP_EXPORT struct AspellConfig * new_aspell_config();
 
-void delete_aspell_config(struct AspellConfig * ths);
+CPP_EXPORT void delete_aspell_config(struct AspellConfig * ths);
 
-struct AspellConfig * aspell_config_clone(const struct AspellConfig * ths);
+CPP_EXPORT struct AspellConfig * aspell_config_clone(const struct AspellConfig * ths);
 
-void aspell_config_assign(struct AspellConfig * ths, const struct AspellConfig * other);
+CPP_EXPORT void aspell_config_assign(struct AspellConfig * ths, const struct AspellConfig * other);
 
-unsigned int aspell_config_error_number(const struct AspellConfig * ths);
+CPP_EXPORT unsigned int aspell_config_error_number(const struct AspellConfig * ths);
 
-const char * aspell_config_error_message(const struct AspellConfig * ths);
+CPP_EXPORT const char * aspell_config_error_message(const struct AspellConfig * ths);
 
-const struct AspellError * aspell_config_error(const struct AspellConfig * ths);
+CPP_EXPORT const struct AspellError * aspell_config_error(const struct AspellConfig * ths);
 
 /* Sets extra keys which this config class should
  * accept. begin and end are expected to point to
  * the beginning and ending of an array of Aspell
  * Key Info. */
-void aspell_config_set_extra(struct AspellConfig * ths, const struct AspellKeyInfo * begin, const struct AspellKeyInfo * end);
+CPP_EXPORT void aspell_config_set_extra(struct AspellConfig * ths, const struct AspellKeyInfo * begin, const struct AspellKeyInfo * end);
 
 /* Returns the KeyInfo object for the
  * corresponding key or returns NULL and sets
  * error_num to PERROR_UNKNOWN_KEY if the key is
  * not valid. The pointer returned is valid for
  * the lifetime of the object. */
-const struct AspellKeyInfo * aspell_config_keyinfo(struct AspellConfig * ths, const char * key);
+CPP_EXPORT const struct AspellKeyInfo * aspell_config_keyinfo(struct AspellConfig * ths, const char * key);
 
 /* Returns a newly allocated enumeration of all
  * the possible objects this config class uses. */
-struct AspellKeyInfoEnumeration * aspell_config_possible_elements(struct AspellConfig * ths, int include_extra);
+CPP_EXPORT struct AspellKeyInfoEnumeration * aspell_config_possible_elements(struct AspellConfig * ths, int include_extra);
 
 /* Returns the default value for given key which
  * may involve substituting variables, thus it is
@@ -134,12 +134,12 @@ struct AspellKeyInfoEnumeration * aspell_config_possible_elements(struct AspellC
  * and sets error_num to PERROR_UNKNOWN_KEY if
  * the key is not valid. Uses the temporary
  * string. */
-const char * aspell_config_get_default(struct AspellConfig * ths, const char * key);
+CPP_EXPORT const char * aspell_config_get_default(struct AspellConfig * ths, const char * key);
 
 /* Returns a newly allocated enumeration of all
  * the key/value pairs. This DOES not include ones
  * which are set to their default values. */
-struct AspellStringPairEnumeration * aspell_config_elements(struct AspellConfig * ths);
+CPP_EXPORT struct AspellStringPairEnumeration * aspell_config_elements(struct AspellConfig * ths);
 
 /* Inserts an item, if the item already exists it
  * will be replaced. Returns TRUE if it succeeded
@@ -151,7 +151,7 @@ struct AspellStringPairEnumeration * aspell_config_elements(struct AspellConfig 
  * PERROR_CANT_CHANGE_VALUE, and if the value is
  * a list and you are trying to set its directory,
  * it sets error_num to PERROR_LIST_SET */
-int aspell_config_replace(struct AspellConfig * ths, const char * key, const char * value);
+CPP_EXPORT int aspell_config_replace(struct AspellConfig * ths, const char * key, const char * value);
 
 /* Remove a key and returns TRUE if it exists
  * otherwise return FALSE. This effectively sets
@@ -163,25 +163,25 @@ int aspell_config_replace(struct AspellConfig * ths, const char * key, const cha
  * PERROR_UNKNOWN_KEY, if the value can not be
  * changed then it sets error_num to
  * PERROR_CANT_CHANGE_VALUE */
-int aspell_config_remove(struct AspellConfig * ths, const char * key);
+CPP_EXPORT int aspell_config_remove(struct AspellConfig * ths, const char * key);
 
-int aspell_config_have(const struct AspellConfig * ths, const char * key);
+CPP_EXPORT int aspell_config_have(const struct AspellConfig * ths, const char * key);
 
 /* Returns NULL on error. */
-const char * aspell_config_retrieve(struct AspellConfig * ths, const char * key);
+CPP_EXPORT const char * aspell_config_retrieve(struct AspellConfig * ths, const char * key);
 
-int aspell_config_retrieve_list(struct AspellConfig * ths, const char * key, struct AspellMutableContainer * lst);
+CPP_EXPORT int aspell_config_retrieve_list(struct AspellConfig * ths, const char * key, struct AspellMutableContainer * lst);
 
 /* In "ths" Aspell configuration, search for a
  * character string matching "key" string.
  * If "key" is found then return 1 else return 0.
  * If error encountered, then return -1. */
-int aspell_config_retrieve_bool(struct AspellConfig * ths, const char * key);
+CPP_EXPORT int aspell_config_retrieve_bool(struct AspellConfig * ths, const char * key);
 
 /* In "ths" Aspell configuration, search for an
  * integer value matching "key" string.
  * Return -1 on error. */
-int aspell_config_retrieve_int(struct AspellConfig * ths, const char * key);
+CPP_EXPORT int aspell_config_retrieve_int(struct AspellConfig * ths, const char * key);
 
 
 
@@ -199,7 +199,7 @@ struct AspellError {
 
 typedef struct AspellError AspellError;
 
-int aspell_error_is_a(const struct AspellError * ths, const struct AspellErrorInfo * e);
+CPP_EXPORT int aspell_error_is_a(const struct AspellError * ths, const struct AspellErrorInfo * e);
 
 
 struct AspellErrorInfo {
@@ -224,104 +224,104 @@ typedef struct AspellErrorInfo AspellErrorInfo;
 typedef struct AspellCanHaveError AspellCanHaveError;
 
 
-unsigned int aspell_error_number(const struct AspellCanHaveError * ths);
+CPP_EXPORT unsigned int aspell_error_number(const struct AspellCanHaveError * ths);
 
-const char * aspell_error_message(const struct AspellCanHaveError * ths);
+CPP_EXPORT const char * aspell_error_message(const struct AspellCanHaveError * ths);
 
-const struct AspellError * aspell_error(const struct AspellCanHaveError * ths);
+CPP_EXPORT const struct AspellError * aspell_error(const struct AspellCanHaveError * ths);
 
-void delete_aspell_can_have_error(struct AspellCanHaveError * ths);
+CPP_EXPORT void delete_aspell_can_have_error(struct AspellCanHaveError * ths);
 
 
 
 /******************************** errors ********************************/
 
 
-extern const struct AspellErrorInfo * const aerror_other;
-extern const struct AspellErrorInfo * const aerror_operation_not_supported;
-extern const struct AspellErrorInfo * const   aerror_cant_copy;
-extern const struct AspellErrorInfo * const   aerror_unimplemented_method;
-extern const struct AspellErrorInfo * const aerror_file;
-extern const struct AspellErrorInfo * const   aerror_cant_open_file;
-extern const struct AspellErrorInfo * const     aerror_cant_read_file;
-extern const struct AspellErrorInfo * const     aerror_cant_write_file;
-extern const struct AspellErrorInfo * const   aerror_invalid_name;
-extern const struct AspellErrorInfo * const   aerror_bad_file_format;
-extern const struct AspellErrorInfo * const aerror_dir;
-extern const struct AspellErrorInfo * const   aerror_cant_read_dir;
-extern const struct AspellErrorInfo * const aerror_config;
-extern const struct AspellErrorInfo * const   aerror_unknown_key;
-extern const struct AspellErrorInfo * const   aerror_cant_change_value;
-extern const struct AspellErrorInfo * const   aerror_bad_key;
-extern const struct AspellErrorInfo * const   aerror_bad_value;
-extern const struct AspellErrorInfo * const   aerror_duplicate;
-extern const struct AspellErrorInfo * const   aerror_key_not_string;
-extern const struct AspellErrorInfo * const   aerror_key_not_int;
-extern const struct AspellErrorInfo * const   aerror_key_not_bool;
-extern const struct AspellErrorInfo * const   aerror_key_not_list;
-extern const struct AspellErrorInfo * const   aerror_no_value_reset;
-extern const struct AspellErrorInfo * const   aerror_no_value_enable;
-extern const struct AspellErrorInfo * const   aerror_no_value_disable;
-extern const struct AspellErrorInfo * const   aerror_no_value_clear;
-extern const struct AspellErrorInfo * const aerror_language_related;
-extern const struct AspellErrorInfo * const   aerror_unknown_language;
-extern const struct AspellErrorInfo * const   aerror_unknown_soundslike;
-extern const struct AspellErrorInfo * const   aerror_language_not_supported;
-extern const struct AspellErrorInfo * const   aerror_no_wordlist_for_lang;
-extern const struct AspellErrorInfo * const   aerror_mismatched_language;
-extern const struct AspellErrorInfo * const aerror_affix;
-extern const struct AspellErrorInfo * const   aerror_corrupt_affix;
-extern const struct AspellErrorInfo * const   aerror_invalid_cond;
-extern const struct AspellErrorInfo * const   aerror_invalid_cond_strip;
-extern const struct AspellErrorInfo * const   aerror_incorrect_encoding;
-extern const struct AspellErrorInfo * const aerror_encoding;
-extern const struct AspellErrorInfo * const   aerror_unknown_encoding;
-extern const struct AspellErrorInfo * const   aerror_encoding_not_supported;
-extern const struct AspellErrorInfo * const   aerror_conversion_not_supported;
-extern const struct AspellErrorInfo * const aerror_pipe;
-extern const struct AspellErrorInfo * const   aerror_cant_create_pipe;
-extern const struct AspellErrorInfo * const   aerror_process_died;
-extern const struct AspellErrorInfo * const aerror_bad_input;
-extern const struct AspellErrorInfo * const   aerror_invalid_string;
-extern const struct AspellErrorInfo * const   aerror_invalid_word;
-extern const struct AspellErrorInfo * const   aerror_invalid_affix;
-extern const struct AspellErrorInfo * const   aerror_inapplicable_affix;
-extern const struct AspellErrorInfo * const   aerror_unknown_unichar;
-extern const struct AspellErrorInfo * const   aerror_word_list_flags;
-extern const struct AspellErrorInfo * const     aerror_invalid_flag;
-extern const struct AspellErrorInfo * const     aerror_conflicting_flags;
-extern const struct AspellErrorInfo * const aerror_version_control;
-extern const struct AspellErrorInfo * const   aerror_bad_version_string;
-extern const struct AspellErrorInfo * const aerror_filter;
-extern const struct AspellErrorInfo * const   aerror_cant_dlopen_file;
-extern const struct AspellErrorInfo * const   aerror_empty_filter;
-extern const struct AspellErrorInfo * const   aerror_no_such_filter;
-extern const struct AspellErrorInfo * const   aerror_confusing_version;
-extern const struct AspellErrorInfo * const   aerror_bad_version;
-extern const struct AspellErrorInfo * const   aerror_identical_option;
-extern const struct AspellErrorInfo * const   aerror_options_only;
-extern const struct AspellErrorInfo * const   aerror_invalid_option_modifier;
-extern const struct AspellErrorInfo * const   aerror_cant_describe_filter;
-extern const struct AspellErrorInfo * const aerror_filter_mode_file;
-extern const struct AspellErrorInfo * const   aerror_mode_option_name;
-extern const struct AspellErrorInfo * const   aerror_no_filter_to_option;
-extern const struct AspellErrorInfo * const   aerror_bad_mode_key;
-extern const struct AspellErrorInfo * const   aerror_expect_mode_key;
-extern const struct AspellErrorInfo * const   aerror_mode_version_requirement;
-extern const struct AspellErrorInfo * const   aerror_confusing_mode_version;
-extern const struct AspellErrorInfo * const   aerror_bad_mode_version;
-extern const struct AspellErrorInfo * const   aerror_missing_magic_expression;
-extern const struct AspellErrorInfo * const   aerror_empty_file_ext;
-extern const struct AspellErrorInfo * const aerror_filter_mode_expand;
-extern const struct AspellErrorInfo * const   aerror_unknown_mode;
-extern const struct AspellErrorInfo * const   aerror_mode_extend_expand;
-extern const struct AspellErrorInfo * const aerror_filter_mode_magic;
-extern const struct AspellErrorInfo * const   aerror_file_magic_pos;
-extern const struct AspellErrorInfo * const   aerror_file_magic_range;
-extern const struct AspellErrorInfo * const   aerror_missing_magic;
-extern const struct AspellErrorInfo * const   aerror_bad_magic;
-extern const struct AspellErrorInfo * const aerror_expression;
-extern const struct AspellErrorInfo * const   aerror_invalid_expression;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_other;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_operation_not_supported;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_cant_copy;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_unimplemented_method;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_file;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_cant_open_file;
+extern CPP_EXPORT const struct AspellErrorInfo * const     aerror_cant_read_file;
+extern CPP_EXPORT const struct AspellErrorInfo * const     aerror_cant_write_file;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_invalid_name;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_bad_file_format;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_dir;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_cant_read_dir;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_config;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_unknown_key;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_cant_change_value;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_bad_key;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_bad_value;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_duplicate;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_key_not_string;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_key_not_int;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_key_not_bool;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_key_not_list;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_no_value_reset;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_no_value_enable;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_no_value_disable;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_no_value_clear;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_language_related;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_unknown_language;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_unknown_soundslike;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_language_not_supported;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_no_wordlist_for_lang;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_mismatched_language;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_affix;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_corrupt_affix;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_invalid_cond;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_invalid_cond_strip;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_incorrect_encoding;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_encoding;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_unknown_encoding;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_encoding_not_supported;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_conversion_not_supported;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_pipe;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_cant_create_pipe;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_process_died;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_bad_input;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_invalid_string;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_invalid_word;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_invalid_affix;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_inapplicable_affix;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_unknown_unichar;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_word_list_flags;
+extern CPP_EXPORT const struct AspellErrorInfo * const     aerror_invalid_flag;
+extern CPP_EXPORT const struct AspellErrorInfo * const     aerror_conflicting_flags;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_version_control;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_bad_version_string;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_filter;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_cant_dlopen_file;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_empty_filter;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_no_such_filter;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_confusing_version;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_bad_version;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_identical_option;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_options_only;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_invalid_option_modifier;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_cant_describe_filter;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_filter_mode_file;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_mode_option_name;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_no_filter_to_option;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_bad_mode_key;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_expect_mode_key;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_mode_version_requirement;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_confusing_mode_version;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_bad_mode_version;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_missing_magic_expression;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_empty_file_ext;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_filter_mode_expand;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_unknown_mode;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_mode_extend_expand;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_filter_mode_magic;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_file_magic_pos;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_file_magic_range;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_missing_magic;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_bad_magic;
+extern CPP_EXPORT const struct AspellErrorInfo * const aerror_expression;
+extern CPP_EXPORT const struct AspellErrorInfo * const   aerror_invalid_expression;
 
 
 /******************************* speller *******************************/
@@ -330,55 +330,55 @@ extern const struct AspellErrorInfo * const   aerror_invalid_expression;
 typedef struct AspellSpeller AspellSpeller;
 
 
-struct AspellCanHaveError * new_aspell_speller(struct AspellConfig * config);
+CPP_EXPORT struct AspellCanHaveError * new_aspell_speller(struct AspellConfig * config);
 
-struct AspellSpeller * to_aspell_speller(struct AspellCanHaveError * obj);
+CPP_EXPORT struct AspellSpeller * to_aspell_speller(struct AspellCanHaveError * obj);
 
-void delete_aspell_speller(struct AspellSpeller * ths);
+CPP_EXPORT void delete_aspell_speller(struct AspellSpeller * ths);
 
-unsigned int aspell_speller_error_number(const struct AspellSpeller * ths);
+CPP_EXPORT unsigned int aspell_speller_error_number(const struct AspellSpeller * ths);
 
-const char * aspell_speller_error_message(const struct AspellSpeller * ths);
+CPP_EXPORT const char * aspell_speller_error_message(const struct AspellSpeller * ths);
 
-const struct AspellError * aspell_speller_error(const struct AspellSpeller * ths);
+CPP_EXPORT const struct AspellError * aspell_speller_error(const struct AspellSpeller * ths);
 
-struct AspellConfig * aspell_speller_config(struct AspellSpeller * ths);
+CPP_EXPORT struct AspellConfig * aspell_speller_config(struct AspellSpeller * ths);
 
 /* Returns 0 if it is not in the dictionary,
  * 1 if it is, or -1 on error. */
-int aspell_speller_check(struct AspellSpeller * ths, const char * word, int word_size);
+CPP_EXPORT int aspell_speller_check(struct AspellSpeller * ths, const char * word, int word_size);
 
 /* Add this word to your own personal word list. */
-int aspell_speller_add_to_personal(struct AspellSpeller * ths, const char * word, int word_size);
+CPP_EXPORT int aspell_speller_add_to_personal(struct AspellSpeller * ths, const char * word, int word_size);
 
 /* Add this word to the current spelling session. */
-int aspell_speller_add_to_session(struct AspellSpeller * ths, const char * word, int word_size);
+CPP_EXPORT int aspell_speller_add_to_session(struct AspellSpeller * ths, const char * word, int word_size);
 
 /* This is your own personal word list file plus
  * any extra words added during this session to
  * your own personal word list. */
-const struct AspellWordList * aspell_speller_personal_word_list(struct AspellSpeller * ths);
+CPP_EXPORT const struct AspellWordList * aspell_speller_personal_word_list(struct AspellSpeller * ths);
 
 /* This is a list of words added to this session
  * that are not in the main word list or in your
  * own personal list but are considered valid for
  * this spelling session. */
-const struct AspellWordList * aspell_speller_session_word_list(struct AspellSpeller * ths);
+CPP_EXPORT const struct AspellWordList * aspell_speller_session_word_list(struct AspellSpeller * ths);
 
 /* This is the main list of words used during this
  * spelling session. */
-const struct AspellWordList * aspell_speller_main_word_list(struct AspellSpeller * ths);
+CPP_EXPORT const struct AspellWordList * aspell_speller_main_word_list(struct AspellSpeller * ths);
 
-int aspell_speller_save_all_word_lists(struct AspellSpeller * ths);
+CPP_EXPORT int aspell_speller_save_all_word_lists(struct AspellSpeller * ths);
 
-int aspell_speller_clear_session(struct AspellSpeller * ths);
+CPP_EXPORT int aspell_speller_clear_session(struct AspellSpeller * ths);
 
 /* Return NULL on error.
  * The word list returned by suggest is only
  * valid until the next call to suggest. */
-const struct AspellWordList * aspell_speller_suggest(struct AspellSpeller * ths, const char * word, int word_size);
+CPP_EXPORT const struct AspellWordList * aspell_speller_suggest(struct AspellSpeller * ths, const char * word, int word_size);
 
-int aspell_speller_store_replacement(struct AspellSpeller * ths, const char * mis, int mis_size, const char * cor, int cor_size);
+CPP_EXPORT int aspell_speller_store_replacement(struct AspellSpeller * ths, const char * mis, int mis_size, const char * cor, int cor_size);
 
 
 
@@ -388,15 +388,15 @@ int aspell_speller_store_replacement(struct AspellSpeller * ths, const char * mi
 typedef struct AspellFilter AspellFilter;
 
 
-void delete_aspell_filter(struct AspellFilter * ths);
+CPP_EXPORT void delete_aspell_filter(struct AspellFilter * ths);
 
-unsigned int aspell_filter_error_number(const struct AspellFilter * ths);
+CPP_EXPORT unsigned int aspell_filter_error_number(const struct AspellFilter * ths);
 
-const char * aspell_filter_error_message(const struct AspellFilter * ths);
+CPP_EXPORT const char * aspell_filter_error_message(const struct AspellFilter * ths);
 
-const struct AspellError * aspell_filter_error(const struct AspellFilter * ths);
+CPP_EXPORT const struct AspellError * aspell_filter_error(const struct AspellFilter * ths);
 
-struct AspellFilter * to_aspell_filter(struct AspellCanHaveError * obj);
+CPP_EXPORT struct AspellFilter * to_aspell_filter(struct AspellCanHaveError * obj);
 
 
 
@@ -418,13 +418,13 @@ typedef struct AspellToken AspellToken;
 typedef struct AspellDocumentChecker AspellDocumentChecker;
 
 
-void delete_aspell_document_checker(struct AspellDocumentChecker * ths);
+CPP_EXPORT void delete_aspell_document_checker(struct AspellDocumentChecker * ths);
 
-unsigned int aspell_document_checker_error_number(const struct AspellDocumentChecker * ths);
+CPP_EXPORT unsigned int aspell_document_checker_error_number(const struct AspellDocumentChecker * ths);
 
-const char * aspell_document_checker_error_message(const struct AspellDocumentChecker * ths);
+CPP_EXPORT const char * aspell_document_checker_error_message(const struct AspellDocumentChecker * ths);
 
-const struct AspellError * aspell_document_checker_error(const struct AspellDocumentChecker * ths);
+CPP_EXPORT const struct AspellError * aspell_document_checker_error(const struct AspellDocumentChecker * ths);
 
 /* Creates a new document checker.
  * The speller class is expected to last until
@@ -435,14 +435,14 @@ const struct AspellError * aspell_document_checker_error(const struct AspellDocu
  * If filter is given then it will take ownership of
  * the filter class and use it to do the filtering.
  * You are expected to free the checker when done. */
-struct AspellCanHaveError * new_aspell_document_checker(struct AspellSpeller * speller);
+CPP_EXPORT struct AspellCanHaveError * new_aspell_document_checker(struct AspellSpeller * speller);
 
-struct AspellDocumentChecker * to_aspell_document_checker(struct AspellCanHaveError * obj);
+CPP_EXPORT struct AspellDocumentChecker * to_aspell_document_checker(struct AspellCanHaveError * obj);
 
 /* Reset the internal state of the filter.
  * Should be called whenever a new document is
  * being filtered. */
-void aspell_document_checker_reset(struct AspellDocumentChecker * ths);
+CPP_EXPORT void aspell_document_checker_reset(struct AspellDocumentChecker * ths);
 
 /* Process a string.
  * The string passed in should only be split on
@@ -452,16 +452,16 @@ void aspell_document_checker_reset(struct AspellDocumentChecker * ths);
  * in the document.  Passing in strings out of
  * order, skipping strings or passing them in
  * more than once may lead to undefined results. */
-void aspell_document_checker_process(struct AspellDocumentChecker * ths, const char * str, int size);
+CPP_EXPORT void aspell_document_checker_process(struct AspellDocumentChecker * ths, const char * str, int size);
 
 /* Returns the next misspelled word in the
  * processed string.  If there are no more
  * misspelled words, then token.word will be
  * NULL and token.size will be 0 */
-struct AspellToken aspell_document_checker_next_misspelling(struct AspellDocumentChecker * ths);
+CPP_EXPORT struct AspellToken aspell_document_checker_next_misspelling(struct AspellDocumentChecker * ths);
 
 /* Returns the underlying filter class. */
-struct AspellFilter * aspell_document_checker_filter(struct AspellDocumentChecker * ths);
+CPP_EXPORT struct AspellFilter * aspell_document_checker_filter(struct AspellDocumentChecker * ths);
 
 
 
@@ -471,11 +471,11 @@ struct AspellFilter * aspell_document_checker_filter(struct AspellDocumentChecke
 typedef struct AspellWordList AspellWordList;
 
 
-int aspell_word_list_empty(const struct AspellWordList * ths);
+CPP_EXPORT int aspell_word_list_empty(const struct AspellWordList * ths);
 
-unsigned int aspell_word_list_size(const struct AspellWordList * ths);
+CPP_EXPORT unsigned int aspell_word_list_size(const struct AspellWordList * ths);
 
-struct AspellStringEnumeration * aspell_word_list_elements(const struct AspellWordList * ths);
+CPP_EXPORT struct AspellStringEnumeration * aspell_word_list_elements(const struct AspellWordList * ths);
 
 
 
@@ -485,15 +485,15 @@ struct AspellStringEnumeration * aspell_word_list_elements(const struct AspellWo
 typedef struct AspellStringEnumeration AspellStringEnumeration;
 
 
-void delete_aspell_string_enumeration(struct AspellStringEnumeration * ths);
+CPP_EXPORT void delete_aspell_string_enumeration(struct AspellStringEnumeration * ths);
 
-struct AspellStringEnumeration * aspell_string_enumeration_clone(const struct AspellStringEnumeration * ths);
+CPP_EXPORT struct AspellStringEnumeration * aspell_string_enumeration_clone(const struct AspellStringEnumeration * ths);
 
-void aspell_string_enumeration_assign(struct AspellStringEnumeration * ths, const struct AspellStringEnumeration * other);
+CPP_EXPORT void aspell_string_enumeration_assign(struct AspellStringEnumeration * ths, const struct AspellStringEnumeration * other);
 
-int aspell_string_enumeration_at_end(const struct AspellStringEnumeration * ths);
+CPP_EXPORT int aspell_string_enumeration_at_end(const struct AspellStringEnumeration * ths);
 
-const char * aspell_string_enumeration_next(struct AspellStringEnumeration * ths);
+CPP_EXPORT const char * aspell_string_enumeration_next(struct AspellStringEnumeration * ths);
 
 
 
@@ -556,56 +556,56 @@ typedef struct AspellDictInfo AspellDictInfo;
 typedef struct AspellModuleInfoList AspellModuleInfoList;
 
 
-struct AspellModuleInfoList * get_aspell_module_info_list(struct AspellConfig * config);
+CPP_EXPORT struct AspellModuleInfoList * get_aspell_module_info_list(struct AspellConfig * config);
 
-int aspell_module_info_list_empty(const struct AspellModuleInfoList * ths);
+CPP_EXPORT int aspell_module_info_list_empty(const struct AspellModuleInfoList * ths);
 
-unsigned int aspell_module_info_list_size(const struct AspellModuleInfoList * ths);
+CPP_EXPORT unsigned int aspell_module_info_list_size(const struct AspellModuleInfoList * ths);
 
-struct AspellModuleInfoEnumeration * aspell_module_info_list_elements(const struct AspellModuleInfoList * ths);
+CPP_EXPORT struct AspellModuleInfoEnumeration * aspell_module_info_list_elements(const struct AspellModuleInfoList * ths);
 
 
 
 typedef struct AspellDictInfoList AspellDictInfoList;
 
 
-struct AspellDictInfoList * get_aspell_dict_info_list(struct AspellConfig * config);
+CPP_EXPORT struct AspellDictInfoList * get_aspell_dict_info_list(struct AspellConfig * config);
 
-int aspell_dict_info_list_empty(const struct AspellDictInfoList * ths);
+CPP_EXPORT int aspell_dict_info_list_empty(const struct AspellDictInfoList * ths);
 
-unsigned int aspell_dict_info_list_size(const struct AspellDictInfoList * ths);
+CPP_EXPORT unsigned int aspell_dict_info_list_size(const struct AspellDictInfoList * ths);
 
-struct AspellDictInfoEnumeration * aspell_dict_info_list_elements(const struct AspellDictInfoList * ths);
+CPP_EXPORT struct AspellDictInfoEnumeration * aspell_dict_info_list_elements(const struct AspellDictInfoList * ths);
 
 
 
 typedef struct AspellModuleInfoEnumeration AspellModuleInfoEnumeration;
 
 
-int aspell_module_info_enumeration_at_end(const struct AspellModuleInfoEnumeration * ths);
+CPP_EXPORT int aspell_module_info_enumeration_at_end(const struct AspellModuleInfoEnumeration * ths);
 
-const struct AspellModuleInfo * aspell_module_info_enumeration_next(struct AspellModuleInfoEnumeration * ths);
+CPP_EXPORT const struct AspellModuleInfo * aspell_module_info_enumeration_next(struct AspellModuleInfoEnumeration * ths);
 
-void delete_aspell_module_info_enumeration(struct AspellModuleInfoEnumeration * ths);
+CPP_EXPORT void delete_aspell_module_info_enumeration(struct AspellModuleInfoEnumeration * ths);
 
-struct AspellModuleInfoEnumeration * aspell_module_info_enumeration_clone(const struct AspellModuleInfoEnumeration * ths);
+CPP_EXPORT struct AspellModuleInfoEnumeration * aspell_module_info_enumeration_clone(const struct AspellModuleInfoEnumeration * ths);
 
-void aspell_module_info_enumeration_assign(struct AspellModuleInfoEnumeration * ths, const struct AspellModuleInfoEnumeration * other);
+CPP_EXPORT void aspell_module_info_enumeration_assign(struct AspellModuleInfoEnumeration * ths, const struct AspellModuleInfoEnumeration * other);
 
 
 
 typedef struct AspellDictInfoEnumeration AspellDictInfoEnumeration;
 
 
-int aspell_dict_info_enumeration_at_end(const struct AspellDictInfoEnumeration * ths);
+CPP_EXPORT int aspell_dict_info_enumeration_at_end(const struct AspellDictInfoEnumeration * ths);
 
-const struct AspellDictInfo * aspell_dict_info_enumeration_next(struct AspellDictInfoEnumeration * ths);
+CPP_EXPORT const struct AspellDictInfo * aspell_dict_info_enumeration_next(struct AspellDictInfoEnumeration * ths);
 
-void delete_aspell_dict_info_enumeration(struct AspellDictInfoEnumeration * ths);
+CPP_EXPORT void delete_aspell_dict_info_enumeration(struct AspellDictInfoEnumeration * ths);
 
-struct AspellDictInfoEnumeration * aspell_dict_info_enumeration_clone(const struct AspellDictInfoEnumeration * ths);
+CPP_EXPORT struct AspellDictInfoEnumeration * aspell_dict_info_enumeration_clone(const struct AspellDictInfoEnumeration * ths);
 
-void aspell_dict_info_enumeration_assign(struct AspellDictInfoEnumeration * ths, const struct AspellDictInfoEnumeration * other);
+CPP_EXPORT void aspell_dict_info_enumeration_assign(struct AspellDictInfoEnumeration * ths, const struct AspellDictInfoEnumeration * other);
 
 
 
@@ -615,27 +615,27 @@ void aspell_dict_info_enumeration_assign(struct AspellDictInfoEnumeration * ths,
 typedef struct AspellStringList AspellStringList;
 
 
-struct AspellStringList * new_aspell_string_list();
+CPP_EXPORT struct AspellStringList * new_aspell_string_list();
 
-int aspell_string_list_empty(const struct AspellStringList * ths);
+CPP_EXPORT int aspell_string_list_empty(const struct AspellStringList * ths);
 
-unsigned int aspell_string_list_size(const struct AspellStringList * ths);
+CPP_EXPORT unsigned int aspell_string_list_size(const struct AspellStringList * ths);
 
-struct AspellStringEnumeration * aspell_string_list_elements(const struct AspellStringList * ths);
+CPP_EXPORT struct AspellStringEnumeration * aspell_string_list_elements(const struct AspellStringList * ths);
 
-int aspell_string_list_add(struct AspellStringList * ths, const char * to_add);
+CPP_EXPORT int aspell_string_list_add(struct AspellStringList * ths, const char * to_add);
 
-int aspell_string_list_remove(struct AspellStringList * ths, const char * to_rem);
+CPP_EXPORT int aspell_string_list_remove(struct AspellStringList * ths, const char * to_rem);
 
-void aspell_string_list_clear(struct AspellStringList * ths);
+CPP_EXPORT void aspell_string_list_clear(struct AspellStringList * ths);
 
-struct AspellMutableContainer * aspell_string_list_to_mutable_container(struct AspellStringList * ths);
+CPP_EXPORT struct AspellMutableContainer * aspell_string_list_to_mutable_container(struct AspellStringList * ths);
 
-void delete_aspell_string_list(struct AspellStringList * ths);
+CPP_EXPORT void delete_aspell_string_list(struct AspellStringList * ths);
 
-struct AspellStringList * aspell_string_list_clone(const struct AspellStringList * ths);
+CPP_EXPORT struct AspellStringList * aspell_string_list_clone(const struct AspellStringList * ths);
 
-void aspell_string_list_assign(struct AspellStringList * ths, const struct AspellStringList * other);
+CPP_EXPORT void aspell_string_list_assign(struct AspellStringList * ths, const struct AspellStringList * other);
 
 
 
@@ -645,43 +645,43 @@ void aspell_string_list_assign(struct AspellStringList * ths, const struct Aspel
 typedef struct AspellStringMap AspellStringMap;
 
 
-struct AspellStringMap * new_aspell_string_map();
+CPP_EXPORT struct AspellStringMap * new_aspell_string_map();
 
-int aspell_string_map_add(struct AspellStringMap * ths, const char * to_add);
+CPP_EXPORT int aspell_string_map_add(struct AspellStringMap * ths, const char * to_add);
 
-int aspell_string_map_remove(struct AspellStringMap * ths, const char * to_rem);
+CPP_EXPORT int aspell_string_map_remove(struct AspellStringMap * ths, const char * to_rem);
 
-void aspell_string_map_clear(struct AspellStringMap * ths);
+CPP_EXPORT void aspell_string_map_clear(struct AspellStringMap * ths);
 
-struct AspellMutableContainer * aspell_string_map_to_mutable_container(struct AspellStringMap * ths);
+CPP_EXPORT struct AspellMutableContainer * aspell_string_map_to_mutable_container(struct AspellStringMap * ths);
 
-void delete_aspell_string_map(struct AspellStringMap * ths);
+CPP_EXPORT void delete_aspell_string_map(struct AspellStringMap * ths);
 
-struct AspellStringMap * aspell_string_map_clone(const struct AspellStringMap * ths);
+CPP_EXPORT struct AspellStringMap * aspell_string_map_clone(const struct AspellStringMap * ths);
 
-void aspell_string_map_assign(struct AspellStringMap * ths, const struct AspellStringMap * other);
+CPP_EXPORT void aspell_string_map_assign(struct AspellStringMap * ths, const struct AspellStringMap * other);
 
-int aspell_string_map_empty(const struct AspellStringMap * ths);
+CPP_EXPORT int aspell_string_map_empty(const struct AspellStringMap * ths);
 
-unsigned int aspell_string_map_size(const struct AspellStringMap * ths);
+CPP_EXPORT unsigned int aspell_string_map_size(const struct AspellStringMap * ths);
 
-struct AspellStringPairEnumeration * aspell_string_map_elements(const struct AspellStringMap * ths);
+CPP_EXPORT struct AspellStringPairEnumeration * aspell_string_map_elements(const struct AspellStringMap * ths);
 
 /* Insert a new element.
  * Will NOT overwrite an existing entry.
  * Returns FALSE if the element already exists. */
-int aspell_string_map_insert(struct AspellStringMap * ths, const char * key, const char * value);
+CPP_EXPORT int aspell_string_map_insert(struct AspellStringMap * ths, const char * key, const char * value);
 
 /* Insert a new element.
  * Will overwrite an existing entry.
  * Always returns TRUE. */
-int aspell_string_map_replace(struct AspellStringMap * ths, const char * key, const char * value);
+CPP_EXPORT int aspell_string_map_replace(struct AspellStringMap * ths, const char * key, const char * value);
 
 /* Looks up an element and returns the value.
  * Returns NULL if the element does not exist.
  * Returns an empty string if the element exists
  * but has a NULL value. */
-const char * aspell_string_map_lookup(const struct AspellStringMap * ths, const char * key);
+CPP_EXPORT const char * aspell_string_map_lookup(const struct AspellStringMap * ths, const char * key);
 
 
 
@@ -706,15 +706,15 @@ typedef struct AspellStringPair AspellStringPair;
 typedef struct AspellStringPairEnumeration AspellStringPairEnumeration;
 
 
-int aspell_string_pair_enumeration_at_end(const struct AspellStringPairEnumeration * ths);
+CPP_EXPORT int aspell_string_pair_enumeration_at_end(const struct AspellStringPairEnumeration * ths);
 
-struct AspellStringPair aspell_string_pair_enumeration_next(struct AspellStringPairEnumeration * ths);
+CPP_EXPORT struct AspellStringPair aspell_string_pair_enumeration_next(struct AspellStringPairEnumeration * ths);
 
-void delete_aspell_string_pair_enumeration(struct AspellStringPairEnumeration * ths);
+CPP_EXPORT void delete_aspell_string_pair_enumeration(struct AspellStringPairEnumeration * ths);
 
-struct AspellStringPairEnumeration * aspell_string_pair_enumeration_clone(const struct AspellStringPairEnumeration * ths);
+CPP_EXPORT struct AspellStringPairEnumeration * aspell_string_pair_enumeration_clone(const struct AspellStringPairEnumeration * ths);
 
-void aspell_string_pair_enumeration_assign(struct AspellStringPairEnumeration * ths, const struct AspellStringPairEnumeration * other);
+CPP_EXPORT void aspell_string_pair_enumeration_assign(struct AspellStringPairEnumeration * ths, const struct AspellStringPairEnumeration * other);
 
 
 
@@ -726,7 +726,7 @@ void aspell_string_pair_enumeration_assign(struct AspellStringPairEnumeration * 
  * use they are not deleted. If which is NULL then all
  * caches will be reset. Current caches are "encode",
  * "decode", "dictionary", "language", and "keyboard". */
-int aspell_reset_cache(const char * which);
+CPP_EXPORT int aspell_reset_cache(const char * which);
 
 #ifdef __cplusplus
 }

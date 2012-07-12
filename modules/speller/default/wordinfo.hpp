@@ -50,7 +50,7 @@ namespace aspeller {
     bool at_end() {return !word;}
     bool adv() {if (adv_) {adv_(this); return true;} word = 0; return false;}
     operator bool () const {return word != 0;}
-    OStream & write(OStream & o, const Language & l, Convert * c = 0) const;
+    CPP_EXPORT OStream & write(OStream & o, const Language & l, Convert * c = 0) const;
     WordEntry() {memset(this, 0, sizeof(WordEntry));}
     void clear() {memset(this, 0, sizeof(WordEntry));}
     ~WordEntry() {}

@@ -15,27 +15,27 @@ class CanHaveError;
 struct Error;
 class Filter;
 
-extern "C" void delete_aspell_filter(Filter * ths)
+extern "C" CPP_EXPORT void delete_aspell_filter(Filter * ths)
 {
   delete ths;
 }
 
-extern "C" unsigned int aspell_filter_error_number(const Filter * ths)
+extern "C" CPP_EXPORT unsigned int aspell_filter_error_number(const Filter * ths)
 {
   return ths->err_ == 0 ? 0 : 1;
 }
 
-extern "C" const char * aspell_filter_error_message(const Filter * ths)
+extern "C" CPP_EXPORT const char * aspell_filter_error_message(const Filter * ths)
 {
   return ths->err_ ? ths->err_->mesg : "";
 }
 
-extern "C" const Error * aspell_filter_error(const Filter * ths)
+extern "C" CPP_EXPORT const Error * aspell_filter_error(const Filter * ths)
 {
   return ths->err_;
 }
 
-extern "C" Filter * to_aspell_filter(CanHaveError * obj)
+extern "C" CPP_EXPORT Filter * to_aspell_filter(CanHaveError * obj)
 {
   return static_cast<Filter *>(obj);
 }

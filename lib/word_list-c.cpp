@@ -14,17 +14,17 @@ namespace acommon {
 class StringEnumeration;
 class WordList;
 
-extern "C" int aspell_word_list_empty(const WordList * ths)
+extern "C" CPP_EXPORT int aspell_word_list_empty(const WordList * ths)
 {
   return ths->empty();
 }
 
-extern "C" unsigned int aspell_word_list_size(const WordList * ths)
+extern "C" CPP_EXPORT unsigned int aspell_word_list_size(const WordList * ths)
 {
   return ths->size();
 }
 
-extern "C" StringEnumeration * aspell_word_list_elements(const WordList * ths)
+extern "C" CPP_EXPORT StringEnumeration * aspell_word_list_elements(const WordList * ths)
 {
   StringEnumeration * els = ths->elements();
   els->from_internal_ = ths->from_internal_;

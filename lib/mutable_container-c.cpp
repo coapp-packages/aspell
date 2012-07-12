@@ -13,22 +13,22 @@ namespace acommon {
 
 class MutableContainer;
 
-extern "C" int aspell_mutable_container_add(MutableContainer * ths, const char * to_add)
+extern "C" CPP_EXPORT int aspell_mutable_container_add(MutableContainer * ths, const char * to_add)
 {
   return ths->add(to_add);
 }
 
-extern "C" int aspell_mutable_container_remove(MutableContainer * ths, const char * to_rem)
+extern "C" CPP_EXPORT int aspell_mutable_container_remove(MutableContainer * ths, const char * to_rem)
 {
   return ths->remove(to_rem);
 }
 
-extern "C" void aspell_mutable_container_clear(MutableContainer * ths)
+extern "C" CPP_EXPORT void aspell_mutable_container_clear(MutableContainer * ths)
 {
   ths->clear();
 }
 
-extern "C" MutableContainer * aspell_mutable_container_to_mutable_container(MutableContainer * ths)
+extern "C" CPP_EXPORT MutableContainer * aspell_mutable_container_to_mutable_container(MutableContainer * ths)
 {
   return ths;
 }

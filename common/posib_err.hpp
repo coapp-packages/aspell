@@ -28,7 +28,7 @@ namespace acommon {
 
   enum WhichErr { PrimErr, SecErr };
 
-  extern "C" const ErrorInfo * const perror_bad_file_format;
+  extern "C" CPP_EXPORT const ErrorInfo * const perror_bad_file_format;
 
   template <typename Ret> class PosibErr;
   

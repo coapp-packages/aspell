@@ -80,34 +80,34 @@ namespace aspeller {
 
   public:
  
-    AffixMgr(const Language * l);
-    ~AffixMgr();
+    CPP_EXPORT AffixMgr(const Language * l);
+    CPP_EXPORT ~AffixMgr();
 
-    unsigned int max_strip() const {return max_strip_;}
+    CPP_EXPORT unsigned int  max_strip() const {return max_strip_;}
 
-    PosibErr<void> setup(ParmString affpath, Conv &);
+    CPP_EXPORT PosibErr<void>  setup(ParmString affpath, Conv &);
 
-    bool affix_check(const LookupInfo &, ParmString, CheckInfo &, GuessInfo *) const;
-    bool prefix_check(const LookupInfo &, ParmString, CheckInfo &, GuessInfo *, 
+    CPP_EXPORT bool  affix_check(const LookupInfo &, ParmString, CheckInfo &, GuessInfo *) const;
+    CPP_EXPORT bool  prefix_check(const LookupInfo &, ParmString, CheckInfo &, GuessInfo *, 
                       bool cross = true) const;
-    bool suffix_check(const LookupInfo &, ParmString, CheckInfo &, GuessInfo *,
+    CPP_EXPORT bool  suffix_check(const LookupInfo &, ParmString, CheckInfo &, GuessInfo *,
                       int sfxopts, AffEntry* ppfx) const;
 
-    void munch(ParmString word, GuessInfo *, bool cross = true) const;
+    CPP_EXPORT void  munch(ParmString word, GuessInfo *, bool cross = true) const;
 
     // None of the expand methods reset the objstack
 
-    WordAff * expand(ParmString word, ParmString aff, 
+    CPP_EXPORT WordAff *  expand(ParmString word, ParmString aff, 
                      ObjStack &, int limit = INT_MAX) const;
 
-    CheckAffixRes check_affix(ParmString word, char aff) const;
+    CPP_EXPORT CheckAffixRes  check_affix(ParmString word, char aff) const;
 
-    WordAff * expand_prefix(ParmString word, ParmString aff, 
+    CPP_EXPORT WordAff *  expand_prefix(ParmString word, ParmString aff, 
                             ObjStack & buf) const 
     {
       return expand(word,aff,buf,0);
     }
-    WordAff * expand_suffix(ParmString word, const unsigned char * aff,
+    CPP_EXPORT WordAff *  expand_suffix(ParmString word, const unsigned char * aff,
                             ObjStack &, int limit = INT_MAX,
                             unsigned char * new_aff = 0, WordAff * * * l = 0,
                             ParmString orig_word = 0) const;
@@ -121,7 +121,7 @@ namespace aspeller {
     PosibErr<void> process_sfx_order();
   };
 
-  PosibErr<AffixMgr *> new_affix_mgr(ParmString name, 
+  CPP_EXPORT PosibErr<AffixMgr *>  new_affix_mgr(ParmString name, 
                                      Conv &,
                                      const Language * lang);
 }

@@ -14,22 +14,22 @@ namespace acommon {
 class CanHaveError;
 struct Error;
 
-extern "C" unsigned int aspell_error_number(const CanHaveError * ths)
+extern "C" CPP_EXPORT unsigned int aspell_error_number(const CanHaveError * ths)
 {
   return ths->err_ == 0 ? 0 : 1;
 }
 
-extern "C" const char * aspell_error_message(const CanHaveError * ths)
+extern "C" CPP_EXPORT const char * aspell_error_message(const CanHaveError * ths)
 {
   return ths->err_ ? ths->err_->mesg : "";
 }
 
-extern "C" const Error * aspell_error(const CanHaveError * ths)
+extern "C" CPP_EXPORT const Error * aspell_error(const CanHaveError * ths)
 {
   return ths->err_;
 }
 
-extern "C" void delete_aspell_can_have_error(CanHaveError * ths)
+extern "C" CPP_EXPORT void delete_aspell_can_have_error(CanHaveError * ths)
 {
   delete ths;
 }

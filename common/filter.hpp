@@ -42,25 +42,25 @@ namespace acommon {
     Filters filters_;
   };
 
-  PosibErr<void> set_mode_from_extension(Config * config,
+  CPP_EXPORT PosibErr<void> set_mode_from_extension(Config * config,
                                          ParmString filename,
                                          FILE * in = NULL);
   
-  PosibErr<void> setup_filter(Filter &, Config *, 
+  CPP_EXPORT PosibErr<void> setup_filter(Filter &, Config *, 
 			      bool use_decoder, 
 			      bool use_filter, 
 			      bool use_encoder);
-  void activate_dynamic_filteroptions(Config *c);
-  void activate_filter_modes(Config * config);
+  CPP_EXPORT void activate_dynamic_filteroptions(Config *c);
+  CPP_EXPORT void activate_filter_modes(Config * config);
 
-  void load_all_filters(Config * config);
+  CPP_EXPORT void load_all_filters(Config * config);
 
-  PosibErr<bool> verify_version(const char * relOp, 
+  CPP_EXPORT PosibErr<bool> verify_version(const char * relOp, 
                                 const char * actual, const char * required);
-  PosibErr<void> check_version(const char * requirement);
+  CPP_EXPORT PosibErr<void> check_version(const char * requirement);
 
-  PosibErr<StringPairEnumeration *> available_filters(Config *);
-  PosibErr<StringPairEnumeration *> available_filter_modes(Config *);
+  CPP_EXPORT PosibErr<StringPairEnumeration *> available_filters(Config *);
+  CPP_EXPORT PosibErr<StringPairEnumeration *> available_filter_modes(Config *);
 
 };
 

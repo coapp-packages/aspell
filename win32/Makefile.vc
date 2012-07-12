@@ -1,0 +1,411 @@
+# aspell-0.50.2/win32/Makefile / 02-06-10	vim600:fdm=marker
+# Author : Thorsten Maerz <torte@netztorte.de>	vim:ts=32
+#
+# Standalone makefile for building GNU Aspell-0.50 using MinGW / GCC3.2
+#
+################################################################################
+#
+# DEBUGVERSION=1: uncomment to include debugging symbols
+#DEBUGVERSION=1
+
+# CURSESDIR=<path>: (optional) location of pdcurses headers and libs
+#CURSESDIR=../../pdcurses
+
+# WIN32_RELOCATABLE=1: uncomment to have user files in <prefix>
+WIN32_RELOCATABLE=1
+
+################################################################################
+
+#prefix=.
+prefix=c:/aspell
+pkglibdir=$(prefix)/dict
+pkgdatadir=$(prefix)/data
+sysconfdir=$(prefix)
+
+top_srcdir=.
+#installdir=$(top_srcdir)/output/$(COMP)/$(PLAT)
+installdir=$(prefix)
+
+################################################################################
+# {{{1	compiler settings
+
+!ifdef DEBUGVERSION
+DEBUGFLAG=-DDEBUG
+!else
+OPTIMIZATION=/O2 /Ox /DNDEBUG
+!endif
+
+!ifdef CURSESDIR
+CURSES_INCLUDE=-I$(CURSESDIR)
+CURSES_LIB=$(CURSESDIR)/panel.a $(CURSESDIR)/pdcurses.a
+CURSES_DEFINES=-DHAVE_LIBCURSES -DCURSES_NON_POSIX
+!endif
+
+!ifdef WIN32_RELOCATABLE
+WIN32RELOC=-DENABLE_WIN32_RELOCATABLE
+!endif
+
+################################################################################
+
+LIBVERSION=15
+ASPELLVERSION=0-50-3
+
+CCOMPILER=cl
+CPPCOMPILER=cl
+CC=$(CCOMPILER)
+CXX=$(CPPCOMPILER)
+AR=lib
+ARFLAGS=
+DEFINES=$(CURSES_DEFINES) $(WIN32RELOC)
+EXTRA_DEFINES= /Dsnprintf=_snprintf /Dasc_isalpha=isalpha /DF_OK=0 \
+  /DCPP_EXPORT=__declspec(dllexport) \
+  /DC_EXPORT="extern \"C\""
+EXTRALIBS=
+RESOURCE=
+NATIVE_CXX=$(CXX)
+NATIVE_CXX=$(CC)
+
+INCLUDES = \
+	-I. \
+	-I$(top_srcdir)/common \
+	-I$(top_srcdir)/gen \
+	-I$(top_srcdir)/interfaces/cc \
+	-I$(top_srcdir)/modules/filter \
+	-I$(top_srcdir)/modules/speller/default \
+	-I$(top_srcdir)/modules/tokenizer \
+    -I$(top_srcdir)/win32 \
+	$(CURSES_INCLUDE)
+
+FLAGS=$(DEBUGFLAG) $(OPTIMIZATION) /EHsc /DWIN32 /nologo
+CFLAGS=$(FLAGS) $(DEFINES) $(EXTRA_DEFINES) $(INCLUDES)
+CXXFLAGS=$(CFLAGS)
+CPPFLAGS=$(CFLAGS)
+SUPPORTLIBS=
+LIBS=
+
+static_optfiles = \
+  modules/filter/email-filter.info\
+  modules/filter/tex-filter.info\
+  modules/filter/sgml-filter.info\
+  modules/filter/html-filter.info\
+  modules/filter/context-filter.info\
+  modules/filter/texinfo-filter.info
+
+.cpp.obj:
+	$(CPP) $(CPPFLAGS) /Fo$*.obj /c $*.cpp
+
+################################################################################
+# {{{1	targets
+#
+all: \
+	aspell_common_a \
+	aspell_filter_standard_a \
+	aspell_speller_default_a \
+	aspell_tokenizer_a \
+	aspell_dll \
+	pspell_dll \
+	aspell_exe \
+	word_list_compress_exe 
+
+clean: \
+	aspell_common_clean \
+	aspell_filter_standard_clean \
+	aspell_speller_default_clean \
+	aspell_tokenizer_clean \
+	aspell_dll_clean \
+	pspell_dll_clean \
+	aspell_exe_clean \
+	word_list_compress_clean \
+	regfile_clean
+	
+################################################################################
+# {{{1	aspell-common
+#
+ASPELL_COMMON_A_NAME=aspell-common-$(ASPELLVERSION).lib
+
+aspell_common_OBJECTS = \
+	common/cache.obj \
+	common/string.obj \
+	common/getdata.obj \
+	common/itemize.obj \
+	common/file_util.obj \
+	common/string_map.obj \
+	common/string_list.obj \
+	common/config.obj \
+	common/posib_err.obj \
+	common/errors.obj \
+	common/error.obj \
+	common/fstream.obj \
+	common/iostream.obj \
+	common/info.obj \
+	common/can_have_error.obj \
+	common/convert.obj \
+	common/tokenizer.obj \
+	common/speller.obj \
+	common/document_checker.obj \
+	common/filter.obj \
+	common/objstack.obj \
+	common/strtonum.obj \
+	common/gettext_init.obj \
+	common/file_data_util.obj
+
+gen/dirs.h: gen/mk-dirs_h.pl
+	perl gen/mk-dirs_h.pl $(prefix) $(pkgdatadir) $(pkglibdir)  $(sysconfdir) > gen/dirs.h
+
+config.cpp: gen/dirs.h
+
+aspell_common_a: $(ASPELL_COMMON_A_NAME) 
+$(ASPELL_COMMON_A_NAME): gen/dirs.h $(aspell_common_OBJECTS)
+	$(AR) \
+	/out:$@ \
+	$(aspell_common_OBJECTS)
+	$(ARFLAGS) \
+
+aspell_common_clean:
+	-rm $(aspell_common_OBJECTS) \
+	$(ASPELL_COMMON_A_NAME) \
+	mk-dirs_h.exe mk-dirs_h \
+	gen/dirs.h gen/dirs.obj
+
+#######################################################################
+# {{{1	aspell-filter-standard
+#
+ASPELL_FILTER_STANDARD_A_NAME=aspell-filter-standard.lib
+aspell_filter_standard_EXTRALIBS = \
+	$(ASPELL_COMMON_A_NAME)
+
+aspell_filter_standard_OBJECTS = \
+	modules/filter/email.obj \
+	modules/filter/nroff.obj \
+	modules/filter/texinfo.obj \
+	modules/filter/context.obj \
+	modules/filter/url.obj \
+	modules/filter/tex.obj \
+	modules/filter/sgml.obj
+
+aspell_filter_standard_a: $(ASPELL_FILTER_STANDARD_A_NAME)
+$(ASPELL_FILTER_STANDARD_A_NAME): $(aspell_filter_standard_OBJECTS)
+	$(AR) \
+	/out:$@ \
+	$** \
+	$(ARFLAGS) \
+
+aspell_filter_standard_clean:
+	-rm $(aspell_filter_standard_OBJECTS) \
+	 $(ASPELL_FILTER_STANDARD_A_NAME)
+
+#######################################################################
+# {{{1	aspell-speller-default
+#
+ASPELL_SPELLER_DEFAULT_A_NAME=aspell-speller-default.lib
+aspell_speller_default_EXTRALIBS = \
+	$(ASPELL_COMMON_A_NAME)
+
+aspell_speller_default_OBJECTS = \
+	modules/speller/default/data.obj \
+	modules/speller/default/leditdist.obj \
+	modules/speller/default/primes.obj \
+	modules/speller/default/editdist.obj \
+	modules/speller/default/speller_impl.obj \
+	modules/speller/default/readonly_ws.obj \
+	modules/speller/default/multi_ws.obj \
+	modules/speller/default/phonet.obj \
+	modules/speller/default/suggest.obj \
+	modules/speller/default/language.obj \
+	modules/speller/default/phonetic.obj \
+	modules/speller/default/typo_editdist.obj \
+	modules/speller/default/writable.obj \
+	modules/speller/default/affix.obj \
+
+aspell_speller_default_a: $(ASPELL_SPELLER_DEFAULT_A_NAME)
+$(ASPELL_SPELLER_DEFAULT_A_NAME): $(aspell_speller_default_OBJECTS)
+	$(AR) \
+	/out:$@ \
+	$** \
+	$(ARFLAGS) \
+
+aspell_speller_default_clean:
+	-rm $(aspell_speller_default_OBJECTS) \
+	$(ASPELL_SPELLER_DEFAULT_A_NAME)
+
+################################################################################
+# {{{1	aspell-tokenizer
+#
+ASPELL_TOKENIZER_A_NAME=aspell-tokenizer.lib
+aspell_tokenizer_EXTRALIBS = \
+	$(ASPELL_COMMON_A_NAME)
+
+aspell_tokenizer_OBJECTS = \
+	modules/tokenizer/basic.obj \
+
+aspell_tokenizer_SOURCE = \
+	modules/tokenizer/basic.cpp \
+
+aspell_tokenizer_a: $(ASPELL_TOKENIZER_A_NAME)
+$(ASPELL_TOKENIZER_A_NAME): $(aspell_tokenizer_OBJECTS)
+	$(AR) \
+	/out:$@ \
+	$** \
+	$(ARFLAGS) \
+
+aspell_tokenizer_clean:
+	-rm $(aspell_tokenizer_OBJECTS) \
+	$(ASPELL_TOKENIZER_A_NAME)
+
+################################################################################
+# {{{1	aspell-dll
+#
+ASPELL_DLL_NAME=aspell-$(LIBVERSION).dll
+ASPELL_DLL_LIB_NAME=libaspell-$(LIBVERSION)-dll.lib
+ASPELL_DLL_DEF_NAME=aspell-$(LIBVERSION).exp
+
+aspell_dll_EXTRALIBS = \
+	$(ASPELL_FILTER_STANDARD_A_NAME) \
+	$(ASPELL_SPELLER_DEFAULT_A_NAME) \
+	$(ASPELL_TOKENIZER_A_NAME) \
+	$(ASPELL_COMMON_A_NAME)
+
+aspell_dll_LDFLAGS = \
+	/LD /link \
+	/out:$(ASPELL_DLL_NAME) /dll  /implib:$(ASPELL_DLL_LIB_NAME) \
+
+aspell_dll_OBJECTS = \
+	lib/can_have_error-c.obj \
+	lib/info-c.obj \
+	lib/string_list-c.obj \
+	lib/config-c.obj \
+	lib/speller-c.obj \
+	lib/string_map-c.obj \
+	lib/error-c.obj \
+	lib/mutable_container-c.obj \
+	lib/string_pair_enumeration-c.obj \
+	lib/find_speller.obj \
+	lib/new_checker.obj \
+	lib/new_filter.obj \
+	lib/new_fmode.obj \
+	lib/new_config.obj \
+	lib/string_enumeration-c.obj \
+	lib/word_list-c.obj \
+	lib/filter-c.obj \
+	lib/document_checker-c.obj \
+
+gen/static_filters: $(static_optfiles) gen/mk-static-filter.pl
+	perl gen/mk-static-filter.pl $(static_optfiles)
+    
+aspell_dll: gen/static_filters $(aspell_dll_EXTRALIBS) $(ASPELL_DLL_NAME)
+$(ASPELL_DLL_NAME): $(aspell_dll_OBJECTS)
+	$(CC) $(CFLAGS) \
+	$(aspell_dll_EXTRALIBS) \
+	$** \
+	$(aspell_dll_LDFLAGS) \
+
+aspell_dll_clean:
+	-rm $(aspell_dll_OBJECTS) \
+    gen/static_filters.src.cpp \
+	$(ASPELL_DLL_NAME) \
+	$(ASPELL_DLL_LIB_NAME) \
+	$(ASPELL_DLL_DEF_NAME)
+
+################################################################################
+# {{{1	pspell-dll
+#
+PSPELL_DLL_NAME=pspell-$(LIBVERSION).dll
+PSPELL_DLL_LIB_NAME=libpspell-$(LIBVERSION)-dll.lib
+PSPELL_DLL_DEF_NAME=pspell-$(LIBVERSION).exp
+
+pspell_dll_LDFLAGS = \
+	/out:$(PSPELL_DLL_LIB_NAME) \
+
+pspell_dll_OBJECTS = \
+	lib/dummy.obj \
+
+pspell_dll_SOURCE = \
+	lib/dummy.cpp \
+
+pspell_dll: $(PSPELL_DLL_LIB_NAME)
+$(PSPELL_DLL_LIB_NAME): $(pspell_dll_OBJECTS)
+	$(AR) \
+	$(pspell_dll_LDFLAGS) \
+	$** \
+
+pspell_dll_clean:
+	-rm $(pspell_dll_OBJECTS) \
+	$(PSPELL_DLL_NAME) \
+	$(PSPELL_DLL_LIB_NAME) \
+	$(PSPELL_DLL_DEF_NAME)
+
+################################################################################
+# {{{1	aspell-exe
+#
+ASPELL_EXE_NAME=aspell.exe
+aspell_exe_EXTRALIBS = \
+	$(ASPELL_COMMON_A_NAME) \
+	$(ASPELL_DLL_LIB_NAME) \
+	$(PSPELL_DLL_LIB_NAME) \
+
+aspell_exe_OBJECTS = \
+	prog/aspell.obj \
+	prog/check_funs.obj \
+	prog/checker_string.obj \
+
+aspell_exe: $(ASPELL_EXE_NAME)
+$(ASPELL_EXE_NAME): $(aspell_exe_OBJECTS) $(aspell_exe_EXTRALIBS)
+	$(CC) $(CFLAGS) \
+	$** \
+	$(aspell_exe_EXTRALIBS) \
+	$(CURSES_LIB) \
+	/Fe$@
+
+aspell_exe_clean:
+	-rm $(aspell_exe_OBJECTS) $(ASPELL_EXE_NAME) \
+    aspell.lib aspell.exp
+
+################################################################################
+# {{{1	word-list-compress
+#
+WORD_LIST_COMPRESS_EXE_NAME=word-list-compress.exe
+
+word_list_compress_OBJECTS = \
+	prog/compress.obj \
+
+prog/compress.obj:	prog/compress.c
+	$(CC) $(CFLAGS) /Fo$@ /c $**
+
+word_list_compress_exe: $(WORD_LIST_COMPRESS_EXE_NAME)
+$(WORD_LIST_COMPRESS_EXE_NAME): $(word_list_compress_OBJECTS)
+	$(CC) $(CFLAGS) \
+	$** \
+	/Fe$@
+
+word_list_compress_clean:
+	-rm $(word_list_compress_OBJECTS) $(WORD_LIST_COMPRESS_EXE_NAME)
+
+################################################################################
+# {{{1	install, regfile
+#
+REGFILE_NAME=aspell.reg
+
+$(REGFILE_NAME):
+	echo REGEDIT4		>  aspell.reg
+	echo 		>> aspell.reg
+	echo [HKEY_CURRENT_USER\\Environment]	>> aspell.reg
+	echo \"ASPELL_CONF\"=\"prefix $(prefix)\"	>> aspell.reg
+
+regfile: $(REGFILE_NAME)
+regfile_clean:
+	-rm $(REGFILE_NAME)
+install: regfile
+	-mkdir $(installdir)
+	-mkdir $(installdir)/$(pkglibdir)
+	-mkdir $(installdir)/$(pkgdatadir)
+	-cp  $(WORD_LIST_COMPRESS_EXE_NAME) \
+	    $(ASPELL_EXE_NAME) \
+	    $(PSPELL_DLL_NAME) \
+	    $(ASPELL_DLL_NAME) \
+	    $(installdir)
+	-cp $(top_srcdir)/data/*.dat $(installdir)/$(pkgdatadir)
+	-cp $(top_srcdir)/data/*.kbd $(installdir)/$(pkgdatadir)
+	-cp $(REGFILE_NAME) $(installdir)
+	
+
+

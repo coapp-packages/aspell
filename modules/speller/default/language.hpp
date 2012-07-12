@@ -128,72 +128,72 @@ namespace aspeller {
 
   public:
 
-    Language() {}
-    PosibErr<void> setup(const String & lang, const Config * config);
-    void set_lang_defaults(Config & config) const;
+    CPP_EXPORT Language() {}
+    CPP_EXPORT PosibErr<void> setup(const String & lang, const Config * config);
+    CPP_EXPORT void set_lang_defaults(Config & config) const;
 
-    const char * data_dir() const {return dir_.c_str();}
-    const char * name() const {return name_.c_str();}
-    const char * charmap() const {return charmap_.c_str();}
-    const char * data_encoding() const {return data_encoding_.c_str();}
+    CPP_EXPORT const char * data_dir() const {return dir_.c_str();}
+    CPP_EXPORT const char * name() const {return name_.c_str();}
+    CPP_EXPORT const char * charmap() const {return charmap_.c_str();}
+    CPP_EXPORT const char * data_encoding() const {return data_encoding_.c_str();}
 
-    const Convert * mesg_conv() const {return mesg_conv_.ptr;}
-    const Convert * to_utf8() const {return to_utf8_.ptr;}
-    const Convert * from_utf8() const {return from_utf8_.ptr;}
+    CPP_EXPORT const Convert * mesg_conv() const {return mesg_conv_.ptr;}
+    CPP_EXPORT const Convert * to_utf8() const {return to_utf8_.ptr;}
+    CPP_EXPORT const Convert * from_utf8() const {return from_utf8_.ptr;}
 
-    int to_uni(char c) const {return to_uni_[to_uchar(c)];}
+    CPP_EXPORT int to_uni(char c) const {return to_uni_[to_uchar(c)];}
 
     //
     // case conversion
     //
 
-    char to_upper(char c) const {return to_upper_[to_uchar(c)];}
-    bool is_upper(char c) const {return to_upper(c) == c;}
+    CPP_EXPORT char to_upper(char c) const {return to_upper_[to_uchar(c)];}
+    CPP_EXPORT bool is_upper(char c) const {return to_upper(c) == c;}
 
-    char to_lower(char c) const {return to_lower_[to_uchar(c)];}
-    bool is_lower(char c) const {return to_lower(c) == c;}
+    CPP_EXPORT char to_lower(char c) const {return to_lower_[to_uchar(c)];}
+    CPP_EXPORT bool is_lower(char c) const {return to_lower(c) == c;}
 
-    char to_title(char c) const {return to_title_[to_uchar(c)];}
-    bool is_title(char c) const {return to_title(c) == c;}
+    CPP_EXPORT char to_title(char c) const {return to_title_[to_uchar(c)];}
+    CPP_EXPORT bool is_title(char c) const {return to_title(c) == c;}
 
-    char * to_lower(char * res, const char * str) const {
+    CPP_EXPORT char * to_lower(char * res, const char * str) const {
       while (*str) *res++ = to_lower(*str++); *res = '\0'; return res;}
-    char * to_upper(char * res, const char * str) const {
+    CPP_EXPORT char * to_upper(char * res, const char * str) const {
       while (*str) *res++ = to_upper(*str++); *res = '\0'; return res;}
 
-    void to_lower(String & res, const char * str) const {
+    CPP_EXPORT void to_lower(String & res, const char * str) const {
       res.clear(); while (*str) res += to_lower(*str++);}
-    void to_upper(String & res, const char * str) const {
+    CPP_EXPORT void to_upper(String & res, const char * str) const {
       res.clear(); while (*str) res += to_upper(*str++);}
 
-    bool is_lower(const char * str) const {
+    CPP_EXPORT bool is_lower(const char * str) const {
       while (*str) {if (!is_lower(*str++)) return false;} return true;}
-    bool is_upper(const char * str) const {
+    CPP_EXPORT bool is_upper(const char * str) const {
       while (*str) {if (!is_upper(*str++)) return false;} return true;}
 
     //
     //
     //
 
-    char to_plain(char c) const {return to_plain_[to_uchar(c)];}
+    CPP_EXPORT char to_plain(char c) const {return to_plain_[to_uchar(c)];}
 
-    char de_accent(char c) const {return de_accent_[to_uchar(c)];}
+    CPP_EXPORT char de_accent(char c) const {return de_accent_[to_uchar(c)];}
     
-    SpecialChar special(char c) const {return special_[to_uchar(c)];}
+    CPP_EXPORT SpecialChar special(char c) const {return special_[to_uchar(c)];}
   
-    CharType char_type(char c) const {return char_type_[to_uchar(c)];}
-    bool is_alpha(char c) const {return char_type(c) >  NonLetter;}
+    CPP_EXPORT CharType char_type(char c) const {return char_type_[to_uchar(c)];}
+    CPP_EXPORT bool is_alpha(char c) const {return char_type(c) >  NonLetter;}
 
-    CharInfo char_info(char c) const {return char_info_[to_uchar(c)];}
+    CPP_EXPORT CharInfo char_info(char c) const {return char_info_[to_uchar(c)];}
 
     //
     // stripped
     //
 
-    char to_stripped(char c) const {return to_stripped_[to_uchar(c)];}
+    CPP_EXPORT char to_stripped(char c) const {return to_stripped_[to_uchar(c)];}
 
     // return a pointer to the END of the string
-    char * to_stripped(char * res, const char * str) const {
+    CPP_EXPORT char * to_stripped(char * res, const char * str) const {
       for (; *str; ++str) {
         char c = to_stripped(*str);
         if (c) *res++ = c;
@@ -201,7 +201,7 @@ namespace aspeller {
       *res = '\0';
       return res;
     }
-    void to_stripped(String & res, const char * str) const {
+    CPP_EXPORT void to_stripped(String & res, const char * str) const {
       res.clear();
       for (; *str; ++str) {
         char c = to_stripped(*str);
@@ -209,9 +209,9 @@ namespace aspeller {
       }
     }
 
-    bool is_stripped(char c) const {return to_stripped(c) == c;}
+    CPP_EXPORT bool is_stripped(char c) const {return to_stripped(c) == c;}
 
-    bool is_stripped(const char * str) const {
+    CPP_EXPORT bool is_stripped(const char * str) const {
       while (*str) {if (!is_stripped(*str++)) return false;} return true;}
 
     //
@@ -222,9 +222,9 @@ namespace aspeller {
     // also strip accents and non-letters.
     //
 
-    char to_clean(char c) const {return to_clean_[to_uchar(c)];}
+    CPP_EXPORT char to_clean(char c) const {return to_clean_[to_uchar(c)];}
 
-    char * to_clean(char * res, const char * str) const {
+    CPP_EXPORT char * to_clean(char * res, const char * str) const {
       for (; *str; ++str) {
         char c = to_clean(*str);
         if (c) *res++ = c;
@@ -232,7 +232,7 @@ namespace aspeller {
       *res = '\0';
       return res;
     }
-    void to_clean(String & res, const char * str) const {
+    CPP_EXPORT void to_clean(String & res, const char * str) const {
       res.clear();
       for (; *str; ++str) {
         char c = to_clean(*str);
@@ -240,113 +240,113 @@ namespace aspeller {
       }
     }
 
-    bool is_clean(char c) const {return to_clean(c) == c;}
+    CPP_EXPORT bool is_clean(char c) const {return to_clean(c) == c;}
 
-    bool is_clean(const char * str) const {
+    CPP_EXPORT bool is_clean(const char * str) const {
       while (*str) {if (!is_clean(*str++)) return false;} return true;}
 
-    bool is_clean_wi(WordInfo wi) const {
+    CPP_EXPORT bool is_clean_wi(WordInfo wi) const {
       return false;
       //return wi & CASE_PATTEN == AllLower && 
     }
 
 
-    const char * clean_chars() const {return clean_chars_.c_str();}
+    CPP_EXPORT const char * clean_chars() const {return clean_chars_.c_str();}
 
     //
     // Soundslike
     // 
   
-    bool have_soundslike() const {return have_soundslike_;}
+    CPP_EXPORT bool have_soundslike() const {return have_soundslike_;}
     
-    const char * soundslike_name() const {return soundslike_->name();}
-    const char * soundslike_version() const {return soundslike_->version();}
+    CPP_EXPORT const char * soundslike_name() const {return soundslike_->name();}
+    CPP_EXPORT const char * soundslike_version() const {return soundslike_->version();}
 
-    void to_soundslike(String & res, ParmStr word) const {
+    CPP_EXPORT void to_soundslike(String & res, ParmStr word) const {
       res.resize(word.size());
       char * e = soundslike_->to_soundslike(res.data(), word.str(), word.size());
       res.resize(e - res.data());
     }
     
     // returns a pointer to the END of the string
-    char * to_soundslike(char * res, const char * str, int len = -1) const { 
+    CPP_EXPORT char * to_soundslike(char * res, const char * str, int len = -1) const { 
       return soundslike_->to_soundslike(res,str,len);
     }
 
-    char * to_soundslike(char * res, const char * str, int len, WordInfo wi) const {
+    CPP_EXPORT char * to_soundslike(char * res, const char * str, int len, WordInfo wi) const {
       if (!have_soundslike_ && (wi & ALL_CLEAN)) return 0;
       else return soundslike_->to_soundslike(res,str,len);
     }
 
-    const char * soundslike_chars() const {return soundslike_chars_.c_str();}
+    CPP_EXPORT const char * soundslike_chars() const {return soundslike_chars_.c_str();}
 
     //
     // Affix compression methods
     //
 
-    const AffixMgr * affix() const {return affix_;}
+    CPP_EXPORT const AffixMgr * affix() const {return affix_;}
 
-    bool have_affix() const {return affix_;}
+    CPP_EXPORT bool have_affix() const {return affix_;}
 
-    void munch(ParmStr word, GuessInfo * cl, bool cross = true) const {
+    CPP_EXPORT void munch(ParmStr word, GuessInfo * cl, bool cross = true) const {
       if (affix_)
         affix_->munch(word, cl, cross);
     }
       
-    WordAff * expand(ParmStr word, ParmStr aff, 
+    CPP_EXPORT WordAff * expand(ParmStr word, ParmStr aff, 
                      ObjStack & buf, int limit = INT_MAX) const {
       if (affix_)
         return affix_->expand(word, aff, buf, limit);
       else
         return fake_expand(word, aff, buf);
     }
-    WordAff * fake_expand(ParmStr word, ParmStr aff, ObjStack & buf) const;
+    CPP_EXPORT WordAff * fake_expand(ParmStr word, ParmStr aff, ObjStack & buf) const;
 
     //
     // Repl
     //
 
-    bool have_repl() const {return have_repl_;}
+    CPP_EXPORT bool have_repl() const {return have_repl_;}
 
-    SuggestReplEnumeration * repl() const {
+    CPP_EXPORT SuggestReplEnumeration * repl() const {
       return new SuggestReplEnumeration(repls_.pbegin(), repls_.pend());}
     
     //
     //
     //
 
-    WordInfo get_word_info(ParmStr str) const;
+    CPP_EXPORT WordInfo get_word_info(ParmStr str) const;
     
     //
     // fix_case
     //
 
-    CasePattern case_pattern(ParmStr str) const;
+    CPP_EXPORT CasePattern case_pattern(ParmStr str) const;
 
-    CasePattern case_pattern(const char * str, unsigned size) const;
+    CPP_EXPORT CasePattern case_pattern(const char * str, unsigned size) const;
 
-    void fix_case(CasePattern case_pattern, char * str)
+    CPP_EXPORT void fix_case(CasePattern case_pattern, char * str)
     {
       if (!str[0]) return;
       if (case_pattern == AllUpper) to_upper(str,str);
       else if (case_pattern == FirstUpper) *str = to_title(*str);
     }
-    void fix_case(CasePattern case_pattern, 
+    CPP_EXPORT void fix_case(CasePattern case_pattern, 
                   char * res, const char * str) const;
-    const char * fix_case(CasePattern case_pattern, 
+    CPP_EXPORT const char * fix_case(CasePattern case_pattern, 
                           const char * str, String & buf) const;
 
     //
     // for cache
     //
 
-    static inline PosibErr<Language *> get_new(const String & lang, const Config * config) {
+    CPP_EXPORT static inline PosibErr<Language *> get_new(const String & lang, const Config * config) {
       StackPtr<Language> l(new Language());
       RET_ON_ERR(l->setup(lang, config));
       return l.release();
     }
 
-    bool cache_key_eq(const String & l) const  {return name_ == l;}
+    CPP_EXPORT bool cache_key_eq(const String & l) const  {return name_ == l;}
   };
 
   typedef Language LangImpl;
@@ -409,7 +409,7 @@ namespace aspeller {
     bool ignore_accents;    
     bool begin;
     bool end;
-    SensitiveCompare(const Language * l = 0) 
+    CPP_EXPORT SensitiveCompare(const Language * l = 0) 
       : lang(l), case_insensitive(false), ignore_accents(false),
         begin(true), end(true) {}
     bool operator() (const char * word, const char * inlist) const;
@@ -420,7 +420,7 @@ namespace aspeller {
     OStream * log;
     MsgConv msgconv1;
     MsgConv msgconv2;
-    CleanAffix(const Language * lang0, OStream * log0);
+    CPP_EXPORT CleanAffix(const Language * lang0, OStream * log0);
     char * operator() (ParmStr word, char * aff);
   };
 
@@ -431,13 +431,13 @@ namespace aspeller {
       SimpleString word;
       SimpleString aff;
     };
-    WordListIterator(StringEnumeration * in,
+    CPP_EXPORT WordListIterator(StringEnumeration * in,
                      const Language * lang,
                      OStream * log);
     // init may set "norm-strict" to true which is why it is not const
-    PosibErr<void> init (Config & config);
-    const Value * operator-> () const {return &val;}
-    PosibErr<bool> adv();
+    CPP_EXPORT PosibErr<void> init (Config & config);
+    CPP_EXPORT const Value * operator-> () const {return &val;}
+    CPP_EXPORT PosibErr<bool> adv();
   private:
     bool have_affix;
     bool validate_words;
@@ -458,18 +458,18 @@ namespace aspeller {
     CleanAffix clean_affix;
   };
 
-  String get_stripped_chars(const Language & l);
+  CPP_EXPORT String get_stripped_chars(const Language & l);
 
-  String get_clean_chars(const Language & l);
+  CPP_EXPORT String get_clean_chars(const Language & l);
   
-  PosibErr<void> check_if_valid(const Language & l, ParmStr word);
-  PosibErr<void> validate_affix(const Language & l, ParmStr word, ParmStr aff);
+  CPP_EXPORT PosibErr<void> check_if_valid(const Language & l, ParmStr word);
+  CPP_EXPORT PosibErr<void> validate_affix(const Language & l, ParmStr word, ParmStr aff);
 
-  bool find_language(Config & c);
+  CPP_EXPORT bool find_language(Config & c);
 
-  PosibErr<Language *> new_language(const Config &, ParmStr lang = 0);
+  CPP_EXPORT PosibErr<Language *> new_language(const Config &, ParmStr lang = 0);
 
-  PosibErr<void> open_affix_file(const Config &, FStream & o);
+  CPP_EXPORT PosibErr<void> open_affix_file(const Config &, FStream & o);
 }
 
 

@@ -13,27 +13,27 @@ namespace acommon {
 
 class StringPairEnumeration;
 
-extern "C" int aspell_string_pair_enumeration_at_end(const StringPairEnumeration * ths)
+extern "C" CPP_EXPORT int aspell_string_pair_enumeration_at_end(const StringPairEnumeration * ths)
 {
   return ths->at_end();
 }
 
-extern "C" StringPair aspell_string_pair_enumeration_next(StringPairEnumeration * ths)
+extern "C" CPP_EXPORT StringPair aspell_string_pair_enumeration_next(StringPairEnumeration * ths)
 {
   return ths->next();
 }
 
-extern "C" void delete_aspell_string_pair_enumeration(StringPairEnumeration * ths)
+extern "C" CPP_EXPORT void delete_aspell_string_pair_enumeration(StringPairEnumeration * ths)
 {
   delete ths;
 }
 
-extern "C" StringPairEnumeration * aspell_string_pair_enumeration_clone(const StringPairEnumeration * ths)
+extern "C" CPP_EXPORT StringPairEnumeration * aspell_string_pair_enumeration_clone(const StringPairEnumeration * ths)
 {
   return ths->clone();
 }
 
-extern "C" void aspell_string_pair_enumeration_assign(StringPairEnumeration * ths, const StringPairEnumeration * other)
+extern "C" CPP_EXPORT void aspell_string_pair_enumeration_assign(StringPairEnumeration * ths, const StringPairEnumeration * other)
 {
   ths->assign(other);
 }

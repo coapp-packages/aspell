@@ -21,7 +21,7 @@ struct Error;
 class Speller;
 class WordList;
 
-extern "C" CanHaveError * new_aspell_speller(Config * config)
+extern "C" CPP_EXPORT CanHaveError * new_aspell_speller(Config * config)
 {
   PosibErr<Speller *> ret = new_speller(config);
   if (ret.has_err()) {
@@ -31,37 +31,37 @@ extern "C" CanHaveError * new_aspell_speller(Config * config)
   }
 }
 
-extern "C" Speller * to_aspell_speller(CanHaveError * obj)
+extern "C" CPP_EXPORT Speller * to_aspell_speller(CanHaveError * obj)
 {
   return static_cast<Speller *>(obj);
 }
 
-extern "C" void delete_aspell_speller(Speller * ths)
+extern "C" CPP_EXPORT void delete_aspell_speller(Speller * ths)
 {
   delete ths;
 }
 
-extern "C" unsigned int aspell_speller_error_number(const Speller * ths)
+extern "C" CPP_EXPORT unsigned int aspell_speller_error_number(const Speller * ths)
 {
   return ths->err_ == 0 ? 0 : 1;
 }
 
-extern "C" const char * aspell_speller_error_message(const Speller * ths)
+extern "C" CPP_EXPORT const char * aspell_speller_error_message(const Speller * ths)
 {
   return ths->err_ ? ths->err_->mesg : "";
 }
 
-extern "C" const Error * aspell_speller_error(const Speller * ths)
+extern "C" CPP_EXPORT const Error * aspell_speller_error(const Speller * ths)
 {
   return ths->err_;
 }
 
-extern "C" Config * aspell_speller_config(Speller * ths)
+extern "C" CPP_EXPORT Config * aspell_speller_config(Speller * ths)
 {
   return ths->config();
 }
 
-extern "C" int aspell_speller_check(Speller * ths, const char * word, int word_size)
+extern "C" CPP_EXPORT int aspell_speller_check(Speller * ths, const char * word, int word_size)
 {
   ths->temp_str_0.clear();
   ths->to_internal_->convert(word, word_size, ths->temp_str_0);
@@ -72,7 +72,7 @@ extern "C" int aspell_speller_check(Speller * ths, const char * word, int word_s
   return ret.data;
 }
 
-extern "C" int aspell_speller_add_to_personal(Speller * ths, const char * word, int word_size)
+extern "C" CPP_EXPORT int aspell_speller_add_to_personal(Speller * ths, const char * word, int word_size)
 {
   ths->temp_str_0.clear();
   ths->to_internal_->convert(word, word_size, ths->temp_str_0);
@@ -83,7 +83,7 @@ extern "C" int aspell_speller_add_to_personal(Speller * ths, const char * word, 
   return 1;
 }
 
-extern "C" int aspell_speller_add_to_session(Speller * ths, const char * word, int word_size)
+extern "C" CPP_EXPORT int aspell_speller_add_to_session(Speller * ths, const char * word, int word_size)
 {
   ths->temp_str_0.clear();
   ths->to_internal_->convert(word, word_size, ths->temp_str_0);
@@ -94,7 +94,7 @@ extern "C" int aspell_speller_add_to_session(Speller * ths, const char * word, i
   return 1;
 }
 
-extern "C" const WordList * aspell_speller_personal_word_list(Speller * ths)
+extern "C" CPP_EXPORT const WordList * aspell_speller_personal_word_list(Speller * ths)
 {
   PosibErr<const WordList *> ret = ths->personal_word_list();
   ths->err_.reset(ret.release_err());
@@ -104,7 +104,7 @@ extern "C" const WordList * aspell_speller_personal_word_list(Speller * ths)
   return ret.data;
 }
 
-extern "C" const WordList * aspell_speller_session_word_list(Speller * ths)
+extern "C" CPP_EXPORT const WordList * aspell_speller_session_word_list(Speller * ths)
 {
   PosibErr<const WordList *> ret = ths->session_word_list();
   ths->err_.reset(ret.release_err());
@@ -114,7 +114,7 @@ extern "C" const WordList * aspell_speller_session_word_list(Speller * ths)
   return ret.data;
 }
 
-extern "C" const WordList * aspell_speller_main_word_list(Speller * ths)
+extern "C" CPP_EXPORT const WordList * aspell_speller_main_word_list(Speller * ths)
 {
   PosibErr<const WordList *> ret = ths->main_word_list();
   ths->err_.reset(ret.release_err());
@@ -124,7 +124,7 @@ extern "C" const WordList * aspell_speller_main_word_list(Speller * ths)
   return ret.data;
 }
 
-extern "C" int aspell_speller_save_all_word_lists(Speller * ths)
+extern "C" CPP_EXPORT int aspell_speller_save_all_word_lists(Speller * ths)
 {
   PosibErr<void> ret = ths->save_all_word_lists();
   ths->err_.reset(ret.release_err());
@@ -132,7 +132,7 @@ extern "C" int aspell_speller_save_all_word_lists(Speller * ths)
   return 1;
 }
 
-extern "C" int aspell_speller_clear_session(Speller * ths)
+extern "C" CPP_EXPORT int aspell_speller_clear_session(Speller * ths)
 {
   PosibErr<void> ret = ths->clear_session();
   ths->err_.reset(ret.release_err());
@@ -140,7 +140,7 @@ extern "C" int aspell_speller_clear_session(Speller * ths)
   return 1;
 }
 
-extern "C" const WordList * aspell_speller_suggest(Speller * ths, const char * word, int word_size)
+extern "C" CPP_EXPORT const WordList * aspell_speller_suggest(Speller * ths, const char * word, int word_size)
 {
   ths->temp_str_0.clear();
   ths->to_internal_->convert(word, word_size, ths->temp_str_0);
@@ -153,7 +153,7 @@ extern "C" const WordList * aspell_speller_suggest(Speller * ths, const char * w
   return ret.data;
 }
 
-extern "C" int aspell_speller_store_replacement(Speller * ths, const char * mis, int mis_size, const char * cor, int cor_size)
+extern "C" CPP_EXPORT int aspell_speller_store_replacement(Speller * ths, const char * mis, int mis_size, const char * cor, int cor_size)
 {
   ths->temp_str_0.clear();
   ths->to_internal_->convert(mis, mis_size, ths->temp_str_0);

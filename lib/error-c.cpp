@@ -13,7 +13,7 @@ namespace acommon {
 struct Error;
 struct ErrorInfo;
 
-extern "C" int aspell_error_is_a(const Error * ths, const ErrorInfo * e)
+extern "C" CPP_EXPORT int aspell_error_is_a(const Error * ths, const ErrorInfo * e)
 {
   return ths->is_a(e);
 }

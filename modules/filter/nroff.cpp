@@ -304,7 +304,7 @@ namespace {
 
 }
 
-C_EXPORT
+C_EXPORT CPP_EXPORT
 IndividualFilter * new_aspell_nroff_filter() {
   return new NroffFilter;                                
 }

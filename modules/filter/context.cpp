@@ -261,7 +261,7 @@ namespace {
   }
 }
 
-C_EXPORT 
+C_EXPORT CPP_EXPORT 
 IndividualFilter * new_aspell_context_filter() {
   return new ContextFilter;                                
 }

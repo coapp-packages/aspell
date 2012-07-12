@@ -9,7 +9,7 @@ static acommon::Mutex lock;
 
 static bool did_init = false;
 
-extern "C" void aspell_gettext_init()
+extern "C" CPP_EXPORT void aspell_gettext_init()
 {
   {
     acommon::Lock l(&lock);
@@ -21,7 +21,7 @@ extern "C" void aspell_gettext_init()
 
 #else
 
-extern "C" void aspell_gettext_init()
+extern "C" CPP_EXPORT void aspell_gettext_init()
 {
 }
 

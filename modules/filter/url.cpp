@@ -59,7 +59,7 @@ namespace {
   }
 }
 
-C_EXPORT 
+C_EXPORT CPP_EXPORT 
 IndividualFilter * new_aspell_url_filter() {
   return new UrlFilter;                                
 }

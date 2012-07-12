@@ -13,27 +13,27 @@ namespace acommon {
 
 class StringEnumeration;
 
-extern "C" void delete_aspell_string_enumeration(StringEnumeration * ths)
+extern "C" CPP_EXPORT void delete_aspell_string_enumeration(StringEnumeration * ths)
 {
   delete ths;
 }
 
-extern "C" StringEnumeration * aspell_string_enumeration_clone(const StringEnumeration * ths)
+extern "C" CPP_EXPORT StringEnumeration * aspell_string_enumeration_clone(const StringEnumeration * ths)
 {
   return ths->clone();
 }
 
-extern "C" void aspell_string_enumeration_assign(StringEnumeration * ths, const StringEnumeration * other)
+extern "C" CPP_EXPORT void aspell_string_enumeration_assign(StringEnumeration * ths, const StringEnumeration * other)
 {
   ths->assign(other);
 }
 
-extern "C" int aspell_string_enumeration_at_end(const StringEnumeration * ths)
+extern "C" CPP_EXPORT int aspell_string_enumeration_at_end(const StringEnumeration * ths)
 {
   return ths->at_end();
 }
 
-extern "C" const char * aspell_string_enumeration_next(StringEnumeration * ths)
+extern "C" CPP_EXPORT const char * aspell_string_enumeration_next(StringEnumeration * ths)
 {
   const char * s = ths->next();
   if (s == 0 || ths->from_internal_ == 0) {

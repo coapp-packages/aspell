@@ -195,7 +195,7 @@ namespace aspeller {
   static const DataType DT_Any          = 0xFF;
 
   // any new extra dictionaries that were loaded will be ii
-  PosibErr<Dict *> add_data_set(ParmString file_name,
+  CPP_EXPORT PosibErr<Dict *> add_data_set(ParmString file_name,
                                 Config &,
                                 DictList * other_dicts = 0,
                                 SpellerImpl * = 0,
@@ -203,19 +203,19 @@ namespace aspeller {
                                 DataType allowed = DT_Any);
   
   // implemented in readonly_ws.cc
-  Dictionary * new_default_readonly_dict();
+  CPP_EXPORT Dictionary * new_default_readonly_dict();
   
-  PosibErr<void> create_default_readonly_dict(StringEnumeration * els,
+  CPP_EXPORT PosibErr<void> create_default_readonly_dict(StringEnumeration * els,
                                               Config & config);
   
   // implemented in multi_ws.cc
-  MultiDict * new_default_multi_dict();
+  CPP_EXPORT MultiDict * new_default_multi_dict();
 
   // implemented in writable.cpp
-  Dictionary * new_default_writable_dict();
+  CPP_EXPORT Dictionary * new_default_writable_dict();
 
   // implemented in writable.cpp
-  ReplacementDict * new_default_replacement_dict();
+  CPP_EXPORT ReplacementDict * new_default_replacement_dict();
 }
 
 #endif

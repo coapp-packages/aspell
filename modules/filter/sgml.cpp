@@ -509,28 +509,28 @@ namespace {
 //   }
 }
 
-C_EXPORT IndividualFilter * new_aspell_sgml_filter() 
+C_EXPORT CPP_EXPORT IndividualFilter * new_aspell_sgml_filter() 
 {
   return new SgmlFilter("sgml");
 }
-C_EXPORT IndividualFilter * new_aspell_sgml_decoder() 
+C_EXPORT CPP_EXPORT IndividualFilter * new_aspell_sgml_decoder() 
 {
   return new SgmlDecoder("sgml");
 }
-// C_EXPORT IndividualFilter * new_aspell_sgml_encoder() 
+// C_EXPORT CPP_EXPORT IndividualFilter * new_aspell_sgml_encoder() 
 // {
 //   return new SgmlEncoder("sgml");
 // }
 
-C_EXPORT IndividualFilter * new_aspell_html_filter() 
+C_EXPORT CPP_EXPORT IndividualFilter * new_aspell_html_filter() 
 {
   return new SgmlFilter("html");
 }
-C_EXPORT IndividualFilter * new_aspell_html_decoder() 
+C_EXPORT CPP_EXPORT IndividualFilter * new_aspell_html_decoder() 
 {
   return new SgmlDecoder("html");
 }
-// C_EXPORT IndividualFilter * new_aspell_html_encoder() 
+// C_EXPORT CPP_EXPORT IndividualFilter * new_aspell_html_encoder() 
 // {
 //   return new SgmlEncoder("html");
 // }

@@ -33,17 +33,17 @@ namespace acommon {
     // will take ownership of tokenizer and filter (even if there is an error)
     // config only used for this method.
     // speller expected to stick around.
-    PosibErr<void> setup(Tokenizer *, Speller *, Filter *);
-    void reset();
-    void process(const char * str, int size);
-    Token next_misspelling();
+    CPP_EXPORT PosibErr<void> setup(Tokenizer *, Speller *, Filter *);
+    CPP_EXPORT void reset();
+    CPP_EXPORT void process(const char * str, int size);
+    CPP_EXPORT Token next_misspelling();
     
-    Filter * filter() {return filter_;}
+    CPP_EXPORT Filter * filter() {return filter_;}
 
-    void set_status_fun(void (*)(void *, Token, int), void *); 
+    CPP_EXPORT void set_status_fun(void (*)(void *, Token, int), void *); 
    
-    DocumentChecker();
-    ~DocumentChecker();
+    CPP_EXPORT DocumentChecker();
+    CPP_EXPORT ~DocumentChecker();
     
   private:
     CopyPtr<Filter> filter_;
@@ -55,7 +55,7 @@ namespace acommon {
     FilterCharVector proc_str_;
   };
 
-  PosibErr<DocumentChecker *> new_document_checker(Speller *);
+  CPP_EXPORT PosibErr<DocumentChecker *> new_document_checker(Speller *);
 
 }
 
