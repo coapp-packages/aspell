@@ -43,7 +43,8 @@ signing {
     attributes : {
         company="Outercurve Foundation",
         description="${Package.PackageDetails.SummaryDescription}",
-        product-name="${Package.Name}",
+        product-name="${Package.name}",
+//        product-name="libaspell[${flavor}]",
         product-version="${package-version}",
         file-version="${package-version}",
     };
