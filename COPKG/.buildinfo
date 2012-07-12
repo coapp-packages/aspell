@@ -1,0 +1,98 @@
+@import "version.inc" ;
+/* target information */
+
+#define {
+    NewVersion : "${package-version++}";
+};
+
+#product-info  {
+	product-name: "aspell";
+    version: "${NewVersion}";
+	original-source-location: "http://ftp.gnu.org/gnu/aspell/aspell-0.60.6.tar.gz";
+	original-source-website: "http://aspell.net/";
+	license: "LGPL 2.1 - See COPYING";
+	packager: "Tim Rogers";
+}
+
+package {
+    set: COMP="${COMP??vc10}";
+    set: PLAT="${PLAT??x86, x64}";
+    uses : {
+        update-version,
+        release,
+    };
+    
+    targets: { 
+        (COMP,PLAT) => @"copkg\libaspell-dev[${0}]-${NewVersion}-${1}.msi",
+    };
+    
+    build-command:@"
+        pushd COPKG
+        autopackage libaspell-dev-common.autopkg || goto failed
+        for %%A in (${COMP}) do (
+            for %%B in (${PLAT}) do (
+                autopackage --flav=%%A --arc=%%B libaspell.autopkg aspell.autopkg libaspell-dev.autopkg || goto failed
+            )
+        )
+    ";
+	clean-command: @"del COPKG\*.msi COPKG\*.wixpdb";
+};
+
+update-version {
+    build-command : @"
+        REM auto-increment version.inc file...
+        if ""${noversion}"" == ""true"" goto :endver
+        pushd COPKG
+        setlocal EnableDelayedExpansion
+        set VERSTRING=#define { package-version: ${NewVersion}; }
+        echo !VERSTRING! > version.inc
+        popd
+        :endver
+    ";
+}
+
+test {
+    // At present, no testing available.
+    uses: release;
+};
+
+release {
+    set: {
+        BldCfg="Release";
+        COMP="${COMP??vc10}";
+        PLAT="${PLAT??x86, x64}";
+    };
+    build-command:@"
+        if ""${BUILT}"" equ ""true"" goto skiprelease
+        for %%A in (${COMP}) do (
+            for %%B in (${PLAT}) do (
+                ptk --nologo base --PLAT=%%B --COMP=%%A || goto failed
+                ptk --nologo clean base --PLAT=%%B --COMP=%%A || goto failed
+            )
+        )
+:skiprelease
+    ";
+    clean-command: @"
+        if exist output rd /s /q output
+        ptk --nologo clean base
+    ";
+};
+
+base {
+    set: BldCfg="${BldCfg??Debug}";
+    compiler: "${COMP??vc10}";
+    platform: "${PLAT??x86}";
+    targets: { 
+        "output\${COMP}\${PLAT}\aspell.exe",
+        "output\${COMP}\${PLAT}\word-list-compress.exe",
+        "output\${COMP}\${PLAT}\aspell-15.dll",
+        "output\${COMP}\${PLAT}\libaspell-15-dll.lib",
+    };
+    build-command:@"
+        nmake /f win32\Makefile.vc all install
+	";
+    clean-command: @"
+        nmake /f win32\Makefile.vc clean
+    ";
+};
+

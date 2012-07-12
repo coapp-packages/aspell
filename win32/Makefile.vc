@@ -16,15 +16,15 @@ WIN32_RELOCATABLE=1
 
 ################################################################################
 
-#prefix=.
-prefix=c:/aspell
-pkglibdir=$(prefix)/dict
-pkgdatadir=$(prefix)/data
+prefix=.
+#prefix=c:/aspell
+pkglibdir=$(prefix)\dict
+pkgdatadir=$(prefix)\data
 sysconfdir=$(prefix)
 
 top_srcdir=.
-#installdir=$(top_srcdir)/output/$(COMP)/$(PLAT)
-installdir=$(prefix)
+installdir=$(top_srcdir)\output\$(COMP)\$(PLAT)
+#installdir=$(prefix)
 
 ################################################################################
 # {{{1	compiler settings
@@ -119,6 +119,94 @@ clean: \
 	regfile_clean
 	
 ################################################################################
+
+aspell_common_OBJ_CLEAN = \
+	common\cache.obj \
+	common\string.obj \
+	common\getdata.obj \
+	common\itemize.obj \
+	common\file_util.obj \
+	common\string_map.obj \
+	common\string_list.obj \
+	common\config.obj \
+	common\posib_err.obj \
+	common\errors.obj \
+	common\error.obj \
+	common\fstream.obj \
+	common\iostream.obj \
+	common\info.obj \
+	common\can_have_error.obj \
+	common\convert.obj \
+	common\tokenizer.obj \
+	common\speller.obj \
+	common\document_checker.obj \
+	common\filter.obj \
+	common\objstack.obj \
+	common\strtonum.obj \
+	common\gettext_init.obj \
+	common\file_data_util.obj
+
+aspell_filter_standard_OBJ_CLEAN = \
+	modules\filter\email.obj \
+	modules\filter\nroff.obj \
+	modules\filter\texinfo.obj \
+	modules\filter\context.obj \
+	modules\filter\url.obj \
+	modules\filter\tex.obj \
+	modules\filter\sgml.obj
+
+aspell_speller_default_OBJ_CLEAN = \
+	modules\speller\default\data.obj \
+	modules\speller\default\leditdist.obj \
+	modules\speller\default\primes.obj \
+	modules\speller\default\editdist.obj \
+	modules\speller\default\speller_impl.obj \
+	modules\speller\default\readonly_ws.obj \
+	modules\speller\default\multi_ws.obj \
+	modules\speller\default\phonet.obj \
+	modules\speller\default\suggest.obj \
+	modules\speller\default\language.obj \
+	modules\speller\default\phonetic.obj \
+	modules\speller\default\typo_editdist.obj \
+	modules\speller\default\writable.obj \
+	modules\speller\default\affix.obj \
+
+aspell_tokenizer_OBJ_CLEAN = \
+	modules\tokenizer\basic.obj \
+
+aspell_dll_OBJ_CLEAN = \
+	lib\can_have_error-c.obj \
+	lib\info-c.obj \
+	lib\string_list-c.obj \
+	lib\config-c.obj \
+	lib\speller-c.obj \
+	lib\string_map-c.obj \
+	lib\error-c.obj \
+	lib\mutable_container-c.obj \
+	lib\string_pair_enumeration-c.obj \
+	lib\find_speller.obj \
+	lib\new_checker.obj \
+	lib\new_filter.obj \
+	lib\new_fmode.obj \
+	lib\new_config.obj \
+	lib\string_enumeration-c.obj \
+	lib\word_list-c.obj \
+	lib\filter-c.obj \
+	lib\document_checker-c.obj \
+
+pspell_dll_OBJ_CLEAN = \
+	lib\dummy.obj \
+
+aspell_exe_OBJ_CLEAN = \
+	prog\aspell.obj \
+	prog\check_funs.obj \
+	prog\checker_string.obj \
+
+word_list_compress_OBJ_CLEAN = \
+	prog\compress.obj \
+
+
+################################################################################
 # {{{1	aspell-common
 #
 ASPELL_COMMON_A_NAME=aspell-common-$(ASPELLVERSION).lib
@@ -162,10 +250,10 @@ $(ASPELL_COMMON_A_NAME): gen/dirs.h $(aspell_common_OBJECTS)
 	$(ARFLAGS) \
 
 aspell_common_clean:
-	-rm $(aspell_common_OBJECTS) \
+	-del $(aspell_common_OBJ_CLEAN) \
 	$(ASPELL_COMMON_A_NAME) \
 	mk-dirs_h.exe mk-dirs_h \
-	gen/dirs.h gen/dirs.obj
+	gen\dirs.h gen\dirs.obj
 
 #######################################################################
 # {{{1	aspell-filter-standard
@@ -191,7 +279,7 @@ $(ASPELL_FILTER_STANDARD_A_NAME): $(aspell_filter_standard_OBJECTS)
 	$(ARFLAGS) \
 
 aspell_filter_standard_clean:
-	-rm $(aspell_filter_standard_OBJECTS) \
+	-del $(aspell_filter_standard_OBJ_CLEAN) \
 	 $(ASPELL_FILTER_STANDARD_A_NAME)
 
 #######################################################################
@@ -225,7 +313,7 @@ $(ASPELL_SPELLER_DEFAULT_A_NAME): $(aspell_speller_default_OBJECTS)
 	$(ARFLAGS) \
 
 aspell_speller_default_clean:
-	-rm $(aspell_speller_default_OBJECTS) \
+	-del $(aspell_speller_default_OBJ_CLEAN) \
 	$(ASPELL_SPELLER_DEFAULT_A_NAME)
 
 ################################################################################
@@ -249,7 +337,7 @@ $(ASPELL_TOKENIZER_A_NAME): $(aspell_tokenizer_OBJECTS)
 	$(ARFLAGS) \
 
 aspell_tokenizer_clean:
-	-rm $(aspell_tokenizer_OBJECTS) \
+	-del $(aspell_tokenizer_OBJ_CLEAN) \
 	$(ASPELL_TOKENIZER_A_NAME)
 
 ################################################################################
@@ -257,7 +345,7 @@ aspell_tokenizer_clean:
 #
 ASPELL_DLL_NAME=aspell-$(LIBVERSION).dll
 ASPELL_DLL_LIB_NAME=libaspell-$(LIBVERSION)-dll.lib
-ASPELL_DLL_DEF_NAME=aspell-$(LIBVERSION).exp
+ASPELL_DLL_DEF_NAME=libaspell-$(LIBVERSION)-dll.exp
 
 aspell_dll_EXTRALIBS = \
 	$(ASPELL_FILTER_STANDARD_A_NAME) \
@@ -300,8 +388,8 @@ $(ASPELL_DLL_NAME): $(aspell_dll_OBJECTS)
 	$(aspell_dll_LDFLAGS) \
 
 aspell_dll_clean:
-	-rm $(aspell_dll_OBJECTS) \
-    gen/static_filters.src.cpp \
+	-del $(aspell_dll_OBJ_CLEAN) \
+    gen\static_filters.src.cpp \
 	$(ASPELL_DLL_NAME) \
 	$(ASPELL_DLL_LIB_NAME) \
 	$(ASPELL_DLL_DEF_NAME)
@@ -324,12 +412,12 @@ pspell_dll_SOURCE = \
 
 pspell_dll: $(PSPELL_DLL_LIB_NAME)
 $(PSPELL_DLL_LIB_NAME): $(pspell_dll_OBJECTS)
-	$(AR) \
-	$(pspell_dll_LDFLAGS) \
-	$** \
+#	$(AR) \
+#	$(pspell_dll_LDFLAGS) \
+#	$** \
 
 pspell_dll_clean:
-	-rm $(pspell_dll_OBJECTS) \
+	-del $(pspell_dll_OBJ_CLEAN) \
 	$(PSPELL_DLL_NAME) \
 	$(PSPELL_DLL_LIB_NAME) \
 	$(PSPELL_DLL_DEF_NAME)
@@ -341,7 +429,7 @@ ASPELL_EXE_NAME=aspell.exe
 aspell_exe_EXTRALIBS = \
 	$(ASPELL_COMMON_A_NAME) \
 	$(ASPELL_DLL_LIB_NAME) \
-	$(PSPELL_DLL_LIB_NAME) \
+#	$(PSPELL_DLL_LIB_NAME) \
 
 aspell_exe_OBJECTS = \
 	prog/aspell.obj \
@@ -357,7 +445,7 @@ $(ASPELL_EXE_NAME): $(aspell_exe_OBJECTS) $(aspell_exe_EXTRALIBS)
 	/Fe$@
 
 aspell_exe_clean:
-	-rm $(aspell_exe_OBJECTS) $(ASPELL_EXE_NAME) \
+	-del $(aspell_exe_OBJ_CLEAN) $(ASPELL_EXE_NAME) \
     aspell.lib aspell.exp
 
 ################################################################################
@@ -378,7 +466,7 @@ $(WORD_LIST_COMPRESS_EXE_NAME): $(word_list_compress_OBJECTS)
 	/Fe$@
 
 word_list_compress_clean:
-	-rm $(word_list_compress_OBJECTS) $(WORD_LIST_COMPRESS_EXE_NAME)
+	-del $(word_list_compress_OBJ_CLEAN) $(WORD_LIST_COMPRESS_EXE_NAME)
 
 ################################################################################
 # {{{1	install, regfile
@@ -393,19 +481,18 @@ $(REGFILE_NAME):
 
 regfile: $(REGFILE_NAME)
 regfile_clean:
-	-rm $(REGFILE_NAME)
+	-del $(REGFILE_NAME)
 install: regfile
 	-mkdir $(installdir)
-	-mkdir $(installdir)/$(pkglibdir)
-	-mkdir $(installdir)/$(pkgdatadir)
-	-cp  $(WORD_LIST_COMPRESS_EXE_NAME) \
-	    $(ASPELL_EXE_NAME) \
-	    $(PSPELL_DLL_NAME) \
-	    $(ASPELL_DLL_NAME) \
-	    $(installdir)
-	-cp $(top_srcdir)/data/*.dat $(installdir)/$(pkgdatadir)
-	-cp $(top_srcdir)/data/*.kbd $(installdir)/$(pkgdatadir)
-	-cp $(REGFILE_NAME) $(installdir)
+	-mkdir $(installdir)\$(pkglibdir)
+	-mkdir $(installdir)\$(pkgdatadir)
+	-copy /y  $(WORD_LIST_COMPRESS_EXE_NAME) $(installdir)
+	-copy /y  $(ASPELL_EXE_NAME) $(installdir)
+	-copy /y  $(ASPELL_DLL_NAME) $(installdir)
+	-copy /y  $(ASPELL_DLL_LIB_NAME) $(installdir)
+	-copy /y $(top_srcdir)\data\*.dat $(installdir)\$(pkgdatadir)
+	-copy /y $(top_srcdir)\data\*.kbd $(installdir)\$(pkgdatadir)
+	-copy /y $(REGFILE_NAME) $(installdir)
 	
 
 

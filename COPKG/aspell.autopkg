@@ -1,0 +1,75 @@
+@import "version.inc";
+@import "aspell.inc";
+@import "outercurve.inc";
+
+#define { 
+    flavor: "${flav??vc10}"; 
+    arch : "${arc??x86}";
+}
+
+package {
+    name: "aspell[${flavor}]";
+    display-name: "aspell";
+    arch: @"${arch}";
+}
+
+metadata {
+    summary: "aspell";
+}
+
+files[exes] {
+    root: @"..\output\${flavor}\${arch}\";
+  
+    include: {
+        "*.exe",
+    };
+    
+    trim-path: all;
+};
+
+files[files-to-sign] {
+    include: { 
+        exes
+    };    
+}
+
+requires {
+    package: "libaspell[${flavor}]-${package-version}-${Package.Architecture}-${Package.PublicKeyToken}";
+}
+
+manifest[things-that-need-them] {
+    assembly : {
+        "libaspell[${flavor}]",
+    };
+
+    include : { 
+        exes
+    };
+}
+
+application {
+    include : {
+        exes,
+    };
+}
+
+package-composition {
+    symlinks : { 
+        exes => @"${bin}\${each.Name}" = @"${packagedir}\${each.Name}";
+    };
+}
+
+signing {
+    attributes : {
+        company="Outercurve Foundation",
+        description="${Package.PackageDetails.SummaryDescription}",
+        product-name="${Package.Name}",
+        product-version="${package-version}",
+        file-version="${package-version}",
+    };
+    
+    replace-signature: true; 
+    include: { 
+        files-to-sign
+    };    
+}
