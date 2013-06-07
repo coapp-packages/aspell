@@ -1,75 +1,86 @@
-@import "version.inc";
-@import "aspell.inc";
-@import "outercurve.inc";
-
-#define { 
-    flavor: "${flav??vc10}"; 
-    arch : "${arc??x86}";
-}
-
-package {
-    name: "aspell[${flavor}]";
-    display-name: "aspell";
-    arch: @"${arch}";
-}
-
-metadata {
-    summary: "aspell";
-}
-
-files[exes] {
-    root: @"..\output\${flavor}\${arch}\";
-  
-    include: {
-        "*.exe",
-    };
-    
-    trim-path: all;
+configurations {
+		
 };
 
-files[files-to-sign] {
-    include: { 
-        exes
-    };    
-}
+nuget {
+	// the nuspec file metadata. Gets created/updated on build
+	nuspec {
+		id = aspell;
+		version : 0.60.6.1;
+		title: GNU Aspell;
+		authors: {Aspell contributors};
+		owners: {CoApp Project, Tom Hanrahan};
+		licenseUrl: "http://aspell.net/man-html/GNU-Lesser-General-Public-License.html#GNU-Lesser-General-Public-License";
+		projectUrl: "http://github.com/coapp-packages/aspell";
+		iconUrl: "https://www.cog-net.eu/bilder/logos/aspell.jpg";
+		requireLicenseAcceptance:false;
+		summary:aspell Spell Checker;
+		description: @"GNU Aspell is a Free and Open Source spell checker designed to eventually replace Ispell.
+	Aspell homepage:  http://aspell.net/";
+		releaseNotes: "Release of Aspell 0.60.6";
+		copyright: Copyright 2013;
+		tags: { aspell, native, CoApp };
 
-requires {
-    package: "libaspell[${flavor}]-${package-version}-${Package.Architecture}-${Package.PublicKeyToken}";
-}
+	};
 
-manifest[things-that-need-them] {
-    assembly : {
-        "libaspell[${flavor}]",
-    };
+	// the files that go into the content folders
+	// (inserted into the nuspec file)
+	files {
+		include: { ..\interfaces\cc\*.h };
 
-    include : { 
-        exes
-    };
-}
-
-application {
-    include : {
-        exes,
-    };
-}
-
-package-composition {
-    symlinks : { 
-        exes => @"${bin}\${each.Name}" = @"${packagedir}\${each.Name}";
-    };
-}
-
-signing {
-    attributes : {
-        company="Outercurve Foundation",
-        description="${Package.PackageDetails.SummaryDescription}",
-        product-name="${Package.name}",
-        product-version="${package-version}",
-        file-version="${package-version}",
-    };
+		docs: { 
+            ..\manual\**\*.html,
+            ..\manual\aspell-dev.info,
+            ..\manual\aspell-dev.texi,
+			..\manual\aspell-import.1,
+			..\manual\aspell.1,
+			..\manual\aspell.info,
+			..\manual\aspell.texi,
+			..\manual\crubadan.texi,
+			..\manual\fdl.texi,
+			..\manual\lang-supported.texi,
+			..\manual\lang-unsupported.texi,
+			..\manual\lgpl.texi,
+			..\manual\Makefile.am,
+			..\manual\Makefile.in,
+			..\manual\mksrc.texi,
+			..\manual\oo-only.texi,
+			..\manual\prezip-bin.1,
+			..\manual\pspell-config.1,
+			..\manual\readme.texi,
+			..\manual\run-with-aspell.1,
+			..\manual\texinfo.tex,
+			..\manual\word-list-compress.1																		
+        };
     
-    replace-signature: true; 
-    include: { 
-        files-to-sign
-    };    
+			("v100,v110", "Win32,x64", "release,debug", "Dynamic") => {
+			[${0},${1},${2},${3}] {
+				lib:     { .\output\${0}\${1}\${2}\${3}\aspell.lib };
+				bin:     { .\output\${0}\${1}\${2}\${3}\aspell.dll };
+				symbols: { .\output\${0}\${1}\${2}\${3}\aspell.pdb };
+			};
+		};
+		("v100,v110", "Win32,x64", "release,debug", "Static,ltcg", "cdecl") => {
+			[${0},${1},${2},${3},${4}] {
+				lib:     { .\output\${0}\${1}\${2}\${3}\aspell.lib };
+			};
+		};
+
+	};
+
+	// the VC++ .props file that gets generated and inserted into the ${d_content} folder
+	props { 
+		// we're going to generate a number of properties anyway. 
+        // so even if the packager doesn't specify the props object 
+        // we're going to make this file.
+	};
+
+	// the VC++ .targets file that gets generated and inserted into the ${d_content} folder
+	targets {
+		// every configuration needs to reference the include directories.
+		Defines += HAS_ASPELL;
+
+			
+	};
 }
+

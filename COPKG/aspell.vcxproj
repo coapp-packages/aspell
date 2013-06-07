@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="PreBuildCmds;PreBuildTargets;Build;PostBuildCmds;PostBuildTargets" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="ConfigurationSettings">
+    <CoAppEtcDirectory>$(registry:HKEY_LOCAL_MACHINE\Software\Outercurve\CoApp.Powershell\etc)</CoAppEtcDirectory>
+    <!-- set to Application or DynamicLibrary (DynamicLibrary can get altered to StaticLibrary by PTK -->
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <!-- Common Compiler Defines (semicolon delimited) -->
+    <Defines>
+	CPP_EXPORT=__declspec(dllexport);
+	C_EXPORT=extern "C";
+	snprintf=_snprintf;
+	asc_isalpha=isalpha;
+	F_OK=0;
+    </Defines>
+    <!-- Additional Include folders (semicolon delimited) -->
+    <IncludeDirectories>..\common;..\interfaces\cc;..\modules\speller\default;..\gen;..\win32</IncludeDirectories>
+    <!-- Additional Library folders (semicolon delimited) -->
+    <LibraryDirectories>
+    </LibraryDirectories>
+    <!-- Libraries to Link with -->
+    <Libraries>
+    </Libraries>
+    <!-- Batch script to run before Build-->
+    <PreBuild>
+    </PreBuild>
+    <!-- Batch script to run after Build-->
+    <PostBuild>
+    </PostBuild>
+    <!-- Targets to run before Build (semcolon delimited)-->
+    <PreBuildTargets>
+    </PreBuildTargets>
+    <!-- Targets to run before Build (semcolon delimited)-->
+    <PostBuildTargets>
+    </PostBuildTargets>
+    <!-- for Dynamic libs, you can specify the Module .DEF file path -->
+    <ModuleDefinitionFile>
+    </ModuleDefinitionFile>
+  </PropertyGroup>
+  <Import Condition="Exists('$(CoAppEtcDirectory)\common-header.vcxproj')" Project="$(CoAppEtcDirectory)\common-header.vcxproj" />
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1356D123-2BB2-461C-9D5F-6D0CB42199EF}</ProjectGuid>
+  </PropertyGroup>
+ 
+  <ItemGroup>
+    <!-- Include the source files to compile here -->
+    <!-- <ClCompile Include="..\src\foo.c" /> -->
+    <ClCompile Include="..\common\cache.cpp" />
+    <ClCompile Include="..\common\string.cpp" />
+    <ClCompile Include="..\common\getdata.cpp" />
+    <ClCompile Include="..\common\itemize.cpp" />
+    <ClCompile Include="..\common\file_util.cpp" />
+    <ClCompile Include="..\common\string_map.cpp" />
+    <ClCompile Include="..\common\string_list.cpp" />
+    <ClCompile Include="..\common\config.cpp" />
+    <ClCompile Include="..\common\posib_err.cpp" />
+    <ClCompile Include="..\common\errors.cpp" />
+    <ClCompile Include="..\common\error.cpp" />
+    <ClCompile Include="..\common\fstream.cpp" />
+    <ClCompile Include="..\common\iostream.cpp" />
+    <ClCompile Include="..\common\info.cpp" />
+    <ClCompile Include="..\common\can_have_error.cpp" />
+    <ClCompile Include="..\common\convert.cpp" />
+    <ClCompile Include="..\common\tokenizer.cpp" />
+    <ClCompile Include="..\common\speller.cpp" />
+    <ClCompile Include="..\common\document_checker.cpp" />
+    <ClCompile Include="..\common\filter.cpp" />
+    <ClCompile Include="..\common\objstack.cpp" />
+    <ClCompile Include="..\common\strtonum.cpp" />
+    <ClCompile Include="..\common\gettext_init.cpp" />
+    <ClCompile Include="..\common\file_data_util.cpp" />
+    <ClCompile Include="..\modules\speller\default\readonly_ws.cpp" />
+    <ClCompile Include="..\modules\speller\default\suggest.cpp" />
+    <ClCompile Include="..\modules\speller\default\data.cpp" />
+    <ClCompile Include="..\modules\speller\default\multi_ws.cpp" />
+    <ClCompile Include="..\modules\speller\default\phonetic.cpp" />
+    <ClCompile Include="..\modules\speller\default\writable.cpp" />
+    <ClCompile Include="..\modules\speller\default\speller_impl.cpp" />
+    <ClCompile Include="..\modules\speller\default\phonet.cpp" />
+    <ClCompile Include="..\modules\speller\default\typo_editdist.cpp" />
+    <ClCompile Include="..\modules\speller\default\editdist.cpp" />
+    <ClCompile Include="..\modules\speller\default\primes.cpp" />
+    <ClCompile Include="..\modules\speller\default\language.cpp" />
+    <ClCompile Include="..\modules\speller\default\leditdist.cpp" />
+    <ClCompile Include="..\modules\speller\default\affix.cpp" />
+    <ClCompile Include="..\modules\tokenizer\basic.cpp" />
+    <ClCompile Include="..\lib\filter-c.cpp" />
+    <ClCompile Include="..\lib\word_list-c.cpp" />
+    <ClCompile Include="..\lib\info-c.cpp" />
+    <ClCompile Include="..\lib\mutable_container-c.cpp" />
+    <ClCompile Include="..\lib\error-c.cpp" />
+    <ClCompile Include="..\lib\document_checker-c.cpp" />
+    <ClCompile Include="..\lib\string_map-c.cpp" />
+    <ClCompile Include="..\lib\new_config.cpp" />
+    <ClCompile Include="..\lib\config-c.cpp" />
+    <ClCompile Include="..\lib\string_enumeration-c.cpp" />
+    <ClCompile Include="..\lib\can_have_error-c.cpp" />
+    <ClCompile Include="..\lib\dummy.cpp" />
+    <ClCompile Include="..\lib\new_filter.cpp" />
+    <ClCompile Include="..\lib\new_fmode.cpp" />
+    <ClCompile Include="..\lib\string_list-c.cpp" />
+    <ClCompile Include="..\lib\find_speller.cpp" />
+    <ClCompile Include="..\lib\speller-c.cpp" />
+    <ClCompile Include="..\lib\string_pair_enumeration-c.cpp" />
+    <ClCompile Include="..\lib\new_checker.cpp" />
+    <ClCompile Include="..\modules\filter\email.cpp" />
+    <ClCompile Include="..\modules\filter\tex.cpp" />
+    <ClCompile Include="..\modules\filter\sgml.cpp" />
+    <ClCompile Include="..\modules\filter\context.cpp" />
+    <ClCompile Include="..\modules\filter\nroff.cpp" />
+    <ClCompile Include="..\modules\filter\texinfo.cpp" />
+  </ItemGroup>
+  <Import Condition="Exists('$(CoAppEtcDirectory)\common-footer.vcxproj')" Project="$(CoAppEtcDirectory)\common-footer.vcxproj" />
+</Project>
